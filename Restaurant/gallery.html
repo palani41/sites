@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — SMP Food Restaurant</title>
+  <meta name="description" content="Explore SMP Food Restaurant's gallery — stunning food photography, restaurant interiors, kitchen action, events and happy customer moments.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍛</text></svg>">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- Cart Overlay & Sidebar -->
+<div id="cart-overlay"></div>
+<div id="cart-sidebar">
+  <div class="cart-header">
+    <h3 class="cart-title">🛒 Your Order</h3>
+    <button id="cart-close" class="cart-close">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items"></div>
+  <div class="cart-footer">
+    <div class="cart-total-row"><span>Total</span><span id="cart-total">₹0</span></div>
+    <button id="checkout-btn" class="btn-gold w-100 mb-2" disabled>Checkout</button>
+    <button id="clear-cart" class="btn-outline-gold w-100" style="font-size:0.85rem">Clear Cart</button>
+  </div>
+</div>
+<div id="toast-smp" class="toast-smp"><span class="toast-icon">✓</span><span class="toast-msg"></span></div>
+<button id="back-to-top" title="Back to top">↑</button>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <button id="lightbox-close">✕</button>
+  <div style="text-align:center">
+    <img id="lightbox-img" src="" alt="Gallery image">
+    <p id="lightbox-caption" style="color:rgba(255,255,255,0.7);margin-top:1rem;font-size:0.9rem"></p>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav id="mainNav" class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">SMP <span>Food</span></a>
+    <div class="d-flex align-items-center gap-2 order-lg-last">
+      <div class="cart-btn-wrap position-relative" id="cart-toggle">
+        <i class="fa fa-shopping-bag"></i><span id="cart-count">0</span>
+      </div>
+      <button class="dark-toggle">☾ Dark</button>
+      <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="offers.html">Offers</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="gallery-hero">
+  <div style="position:relative;z-index:2">
+    <div class="container text-center text-white">
+      <span class="section-eyebrow" data-fade>Visual Journey</span>
+      <h1 class="section-title" style="color:white" data-fade>Our <em>Gallery</em></h1>
+      <div class="divider-gold mx-auto"></div>
+      <p style="color:rgba(255,255,255,0.65);max-width:500px;margin:1rem auto 0;font-size:1rem" data-fade>
+        A visual feast — from sizzling dishes to candid dining moments. Click any image to explore.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY TABS & GRID -->
+<section class="section-pad">
+  <div class="container">
+
+    <!-- Tab Buttons -->
+    <div class="gallery-tabs mb-5" data-fade>
+      <ul class="nav nav-pills justify-content-center gap-2 flex-wrap">
+        <li class="nav-item"><button class="nav-link active gallery-tab-btn" data-cat="all">All Photos</button></li>
+        <li class="nav-item"><button class="nav-link gallery-tab-btn" data-cat="food">🍛 Food</button></li>
+        <li class="nav-item"><button class="nav-link gallery-tab-btn" data-cat="interior">🏛️ Interior</button></li>
+        <li class="nav-item"><button class="nav-link gallery-tab-btn" data-cat="kitchen">👨‍🍳 Kitchen</button></li>
+        <li class="nav-item"><button class="nav-link gallery-tab-btn" data-cat="events">🎉 Events</button></li>
+        <li class="nav-item"><button class="nav-link gallery-tab-btn" data-cat="customers">😊 Customers</button></li>
+      </ul>
+    </div>
+
+    <!-- Masonry Gallery Grid -->
+    <div class="gallery-masonry" id="gallery-grid">
+
+      <!-- FOOD IMAGES -->
+      <div class="gallery-item" data-cat="food">
+        <img src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=600&q=80" alt="Masala Dosa" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Masala Dosa — Our Signature Dish</span></div>
+      </div>
+      <div class="gallery-item" data-cat="food">
+        <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&q=80" alt="Chicken Biryani" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Chicken Biryani — Dum-Cooked to Perfection</span></div>
+      </div>
+      <div class="gallery-item" data-cat="food">
+        <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=600&q=80" alt="Butter Chicken" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Butter Chicken — Velvety & Aromatic</span></div>
+      </div>
+      <div class="gallery-item" data-cat="food">
+        <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&q=80" alt="Paneer Butter Masala" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Paneer Butter Masala — Creamy Classic</span></div>
+      </div>
+      <div class="gallery-item" data-cat="food">
+        <img src="https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?w=600&q=80" alt="Prawn Masala" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Prawn Masala — Coastal Flavours</span></div>
+      </div>
+      <div class="gallery-item" data-cat="food">
+        <img src="https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?w=600&q=80" alt="Mango Lassi" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Mango Lassi — Summer Bliss</span></div>
+      </div>
+      <div class="gallery-item" data-cat="food">
+        <img src="https://images.unsplash.com/photo-1564355808539-22fda35bed7e?w=600&q=80" alt="Chocolate Brownie" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Warm Chocolate Brownie with Vanilla Ice Cream</span></div>
+      </div>
+      <div class="gallery-item" data-cat="food">
+        <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&q=80" alt="Tandoori Chicken" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Tandoori Chicken — Straight from the Clay Oven</span></div>
+      </div>
+      <div class="gallery-item" data-cat="food">
+        <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=600&q=80" alt="Idli Sambar" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Soft Idlis with Sambar & Chutney</span></div>
+      </div>
+      <div class="gallery-item" data-cat="food">
+        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80" alt="Gourmet Burger" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Gourmet Beef Burger — House Special</span></div>
+      </div>
+      <div class="gallery-item" data-cat="food">
+        <img src="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=600&q=80" alt="Pepperoni Pizza" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Wood-Fired Pepperoni Pizza</span></div>
+      </div>
+      <div class="gallery-item" data-cat="food">
+        <img src="https://images.unsplash.com/photo-1557142046-c704a3adf364?w=600&q=80" alt="Mango Kulfi" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Mango Kulfi on a Stick</span></div>
+      </div>
+      <div class="gallery-item" data-cat="food">
+        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&q=80" alt="Black Forest Cake" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Black Forest Celebration Cake</span></div>
+      </div>
+      <div class="gallery-item" data-cat="food">
+        <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&q=80" alt="Noodles" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Hakka Noodles — Wok Fresh</span></div>
+      </div>
+      <div class="gallery-item" data-cat="food">
+        <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=600&q=80" alt="Fried Rice" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Chicken Fried Rice — Wok Tossed</span></div>
+      </div>
+      <div class="gallery-item" data-cat="food">
+        <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&q=80" alt="Grilled Fish" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Charcoal-Grilled Seer Fish Steak</span></div>
+      </div>
+      <div class="gallery-item" data-cat="food">
+        <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=600&q=80" alt="Cappuccino" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Art Cappuccino — Freshly Brewed</span></div>
+      </div>
+      <div class="gallery-item" data-cat="food">
+        <img src="https://images.unsplash.com/photo-1610889556528-9a770e32642f?w=600&q=80" alt="Filter Coffee" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Traditional South Indian Filter Coffee</span></div>
+      </div>
+
+      <!-- INTERIOR IMAGES -->
+      <div class="gallery-item" data-cat="interior">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Main dining hall" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Main Dining Hall — 200 Seat Capacity</span></div>
+      </div>
+      <div class="gallery-item" data-cat="interior">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80" alt="Restaurant ambience" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Evening Ambience — Warm & Welcoming</span></div>
+      </div>
+      <div class="gallery-item" data-cat="interior">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80" alt="Private dining" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Private Dining Room — For Special Occasions</span></div>
+      </div>
+      <div class="gallery-item" data-cat="interior">
+        <img src="https://images.unsplash.com/photo-1579027989536-b7b1f875659b?w=600&q=80" alt="Outdoor seating" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Outdoor Terrace — Open Air Dining</span></div>
+      </div>
+      <div class="gallery-item" data-cat="interior">
+        <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=600&q=80" alt="Bar counter" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Beverage Bar — Signature Mocktails & More</span></div>
+      </div>
+      <div class="gallery-item" data-cat="interior">
+        <img src="https://images.unsplash.com/photo-1560053608-13721e0d95df?w=600&q=80" alt="Dining table" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Table Setting — Elegant & Inviting</span></div>
+      </div>
+      <div class="gallery-item" data-cat="interior">
+        <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=600&q=80" alt="Restaurant entrance" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Restaurant Entrance — Grand Welcome</span></div>
+      </div>
+      <div class="gallery-item" data-cat="interior">
+        <img src="https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?w=600&q=80" alt="Cosy corner" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Cosy Corner Seating — Perfect for Two</span></div>
+      </div>
+      <div class="gallery-item" data-cat="interior">
+        <img src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=600&q=80" alt="Wall art" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Custom Wall Art — Celebrating Tamil Culture</span></div>
+      </div>
+
+      <!-- KITCHEN IMAGES -->
+      <div class="gallery-item" data-cat="kitchen">
+        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80" alt="Professional kitchen" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Our State-of-the-Art Kitchen</span></div>
+      </div>
+      <div class="gallery-item" data-cat="kitchen">
+        <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=600&q=80" alt="Chef cooking" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Head Chef Arumugam at Work</span></div>
+      </div>
+      <div class="gallery-item" data-cat="kitchen">
+        <img src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?w=600&q=80" alt="Chef team" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">The Kitchen Brigade — Our Heart & Soul</span></div>
+      </div>
+      <div class="gallery-item" data-cat="kitchen">
+        <img src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?w=600&q=80" alt="Plating" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Precision Plating — Every Dish is Art</span></div>
+      </div>
+      <div class="gallery-item" data-cat="kitchen">
+        <img src="https://images.unsplash.com/photo-1607631568010-a87245c0daf8?w=600&q=80" alt="Pastry chef" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Pastry Chef Divya — Crafting Dessert Magic</span></div>
+      </div>
+      <div class="gallery-item" data-cat="kitchen">
+        <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=600&q=80" alt="Tandoor oven" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Live Tandoor Station — The Heat is Real</span></div>
+      </div>
+      <div class="gallery-item" data-cat="kitchen">
+        <img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=600&q=80" alt="Spices" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Freshly Ground Spice Blends — Our Secret</span></div>
+      </div>
+      <div class="gallery-item" data-cat="kitchen">
+        <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=80" alt="Fresh ingredients" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Morning Produce — Daily from Local Farms</span></div>
+      </div>
+
+      <!-- EVENTS IMAGES -->
+      <div class="gallery-item" data-cat="events">
+        <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&q=80" alt="Birthday celebration" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Birthday Celebrations — We Make It Special</span></div>
+      </div>
+      <div class="gallery-item" data-cat="events">
+        <img src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=600&q=80" alt="Wedding reception" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Wedding Reception — Grand Hall Transformed</span></div>
+      </div>
+      <div class="gallery-item" data-cat="events">
+        <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=600&q=80" alt="Corporate event" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Corporate Lunch — Business Done Right</span></div>
+      </div>
+      <div class="gallery-item" data-cat="events">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Pongal celebration" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Pongal Festival Special Spread</span></div>
+      </div>
+      <div class="gallery-item" data-cat="events">
+        <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=600&q=80" alt="Food festival" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Annual Food Festival — 2023 Edition</span></div>
+      </div>
+      <div class="gallery-item" data-cat="events">
+        <img src="https://images.unsplash.com/photo-1470338745628-171cf53de3a8?w=600&q=80" alt="Anniversary dinner" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Intimate Anniversary Dinner Setup</span></div>
+      </div>
+      <div class="gallery-item" data-cat="events">
+        <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600&q=80" alt="Diwali decor" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Diwali Special Décor & Menu</span></div>
+      </div>
+
+      <!-- CUSTOMER IMAGES -->
+      <div class="gallery-item" data-cat="customers">
+        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=600&q=80" alt="Happy family dining" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Family Lunch — Sunday Tradition</span></div>
+      </div>
+      <div class="gallery-item" data-cat="customers">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Friends dining" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Friends Night Out at SMP</span></div>
+      </div>
+      <div class="gallery-item" data-cat="customers">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80" alt="Couple dining" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Romantic Date Night — Candlelit Dinner</span></div>
+      </div>
+      <div class="gallery-item" data-cat="customers">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80" alt="Customer smiling" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">That First Bite Smile 😊</span></div>
+      </div>
+      <div class="gallery-item" data-cat="customers">
+        <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=600&q=80" alt="Food blogger" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Food Blogger Visit — Viral Moment</span></div>
+      </div>
+      <div class="gallery-item" data-cat="customers">
+        <img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=600&q=80" alt="Kids enjoying food" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-caption">Little Foodie — Future Chef in the Making</span></div>
+      </div>
+
+    </div><!-- /gallery-masonry -->
+
+    <!-- Photo Count -->
+    <div class="text-center mt-5" data-fade>
+      <p style="color:var(--text-muted);font-size:0.9rem">Showing 50+ photos — <a href="contact.html" style="color:var(--gold)">tag us on Instagram @SMPFood</a> to be featured!</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- INSTAGRAM CTA -->
+<section class="section-pad-sm" style="background:var(--charcoal)">
+  <div class="container text-center">
+    <h3 style="font-family:var(--font-display);color:white;margin-bottom:0.75rem">Follow Our Food Journey</h3>
+    <p style="color:rgba(255,255,255,0.55);margin-bottom:1.5rem">Daily food photos, behind-the-scenes kitchen stories and exclusive offers on Instagram.</p>
+    <a href="#" class="btn-gold"><i class="fab fa-instagram me-2"></i>@SMPFoodChennai</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer pt-5">
+  <div class="container">
+    <div class="row g-5 pb-5">
+      <div class="col-lg-4">
+        <div class="footer-brand mb-3">SMP Food</div>
+        <p class="footer-text mb-4">Authentic flavors, modern soul. Three generations of culinary passion, served fresh every day since 1998.</p>
+        <div class="social-icons">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6">
+        <div class="footer-heading">Quick Links</div>
+        <a class="footer-link" href="index.html">Home</a>
+        <a class="footer-link" href="about.html">About Us</a>
+        <a class="footer-link" href="menu.html">Our Menu</a>
+        <a class="footer-link" href="gallery.html">Gallery</a>
+        <a class="footer-link" href="offers.html">Offers</a>
+        <a class="footer-link" href="contact.html">Contact</a>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6">
+        <div class="footer-heading">Menu</div>
+        <a class="footer-link" href="menu.html?cat=south-indian">South Indian</a>
+        <a class="footer-link" href="menu.html?cat=north-indian">North Indian</a>
+        <a class="footer-link" href="menu.html?cat=chinese">Chinese</a>
+        <a class="footer-link" href="menu.html?cat=seafood">Seafood</a>
+        <a class="footer-link" href="menu.html?cat=desserts">Desserts</a>
+        <a class="footer-link" href="menu.html?cat=beverages">Beverages</a>
+      </div>
+      <div class="col-lg-4 col-md-4">
+        <div class="footer-heading">Newsletter</div>
+        <p class="footer-text mb-3">Get weekly specials and exclusive offers.</p>
+        <form id="newsletter-form" class="newsletter-form mb-4">
+          <input type="email" placeholder="Your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+        <div class="footer-text">
+          <i class="fa fa-map-marker me-2" style="color:var(--gold)"></i>42 Anna Salai, Chennai 600002<br>
+          <i class="fa fa-phone me-2" style="color:var(--gold)"></i>+91 44 2345 6789
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <p>© 2024 SMP Food Restaurant. All rights reserved.</p>
+      <p>Made with ❤️ in Chennai</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/cart.js"></script>
+<script src="assets/js/script.js"></script>
+<script>
+  // Gallery tab filter using jQuery
+  $(document).ready(function () {
+    $(document).on('click', '.gallery-tab-btn', function () {
+      const cat = $(this).data('cat');
+      $('.gallery-tab-btn').removeClass('active');
+      $(this).addClass('active');
+      if (cat === 'all') {
+        $('.gallery-item').fadeIn(300);
+      } else {
+        $('.gallery-item').each(function () {
+          if ($(this).data('cat') === cat) {
+            $(this).fadeIn(300);
+          } else {
+            $(this).fadeOut(200);
+          }
+        });
+      }
+    });
+  });
+</script>
+</body>
+</html>

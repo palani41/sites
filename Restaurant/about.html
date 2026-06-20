@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — SMP Food Restaurant</title>
+  <meta name="description" content="The story of SMP Food Restaurant — 26 years of culinary excellence in Chennai. Meet our chefs, our values and our journey.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍛</text></svg>">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- Cart Overlay & Sidebar -->
+<div id="cart-overlay"></div>
+<div id="cart-sidebar">
+  <div class="cart-header">
+    <h3 class="cart-title">🛒 Your Order</h3>
+    <button id="cart-close" class="cart-close">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items"></div>
+  <div class="cart-footer">
+    <div class="cart-total-row"><span>Total</span><span id="cart-total">₹0</span></div>
+    <button id="checkout-btn" class="btn-gold w-100 mb-2" disabled>Checkout</button>
+    <button id="clear-cart" class="btn-outline-gold w-100" style="font-size:0.85rem">Clear Cart</button>
+  </div>
+</div>
+<div id="toast-smp" class="toast-smp"><span class="toast-icon">✓</span><span class="toast-msg"></span></div>
+<button id="back-to-top" title="Back to top">↑</button>
+
+<!-- NAVBAR -->
+<nav id="mainNav" class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">SMP <span>Food</span></a>
+    <div class="d-flex align-items-center gap-2 order-lg-last">
+      <div class="cart-btn-wrap position-relative" id="cart-toggle">
+        <i class="fa fa-shopping-bag"></i><span id="cart-count">0</span>
+      </div>
+      <button class="dark-toggle">☾ Dark</button>
+      <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="offers.html">Offers</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="about-hero">
+  <div style="position:relative;z-index:2">
+    <div class="container text-center text-white">
+      <span class="section-eyebrow" data-fade>Our Story</span>
+      <h1 class="section-title" style="color:white" data-fade>Three Generations of <em>Culinary Love</em></h1>
+      <div class="divider-gold mx-auto"></div>
+      <p style="color:rgba(255,255,255,0.65);max-width:540px;margin:1rem auto 0;font-size:1rem" data-fade>
+        From a roadside tiffin cart in 1998 to Chennai's most beloved multi-cuisine restaurant — this is how it happened.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPANY INTRO -->
+<section class="section-pad">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6" data-fade-left>
+        <span class="section-eyebrow">Who We Are</span>
+        <h2 class="section-title">SMP Food Restaurant — <em>A Family Legacy</em></h2>
+        <div class="divider-gold"></div>
+        <p class="section-lead mb-4">SMP stands for Senguttuvan Murugesan Palanisamy — the three brothers who started this restaurant with ₹12,000 in savings and an unshakeable belief that Chennai deserved better food.</p>
+        <p style="color:var(--text-muted);line-height:1.8;margin-bottom:1.5rem">Today, that belief has grown into a 200-seat restaurant, a team of 60 passionate staff, and a menu spanning seven cuisines — all without losing the warmth and soul of that original roadside cart.</p>
+        <p style="color:var(--text-muted);line-height:1.8">Every morning starts the same way it always has: our head chef lights the first fire at 5:30 AM, and the first batch of idli batter goes on to steam. Some things never change.</p>
+      </div>
+      <div class="col-lg-6" data-fade-right>
+        <div class="row g-3">
+          <div class="col-6">
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&q=80" alt="Restaurant interior" style="border-radius:var(--radius-lg);height:220px;object-fit:cover;width:100%">
+          </div>
+          <div class="col-6">
+            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&q=80" alt="Kitchen" style="border-radius:var(--radius-lg);height:220px;object-fit:cover;width:100%">
+          </div>
+          <div class="col-12">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=700&q=80" alt="Dining hall" style="border-radius:var(--radius-lg);height:200px;object-fit:cover;width:100%">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR STORY TIMELINE -->
+<section class="section-pad featured-bg">
+  <div class="container">
+    <div class="text-center mb-5" data-fade>
+      <span class="section-eyebrow">The Journey</span>
+      <h2 class="section-title">Our <em>Story So Far</em></h2>
+      <div class="divider-gold mx-auto"></div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <!-- Timeline -->
+        <div style="position:relative">
+          <div style="position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--gold),var(--gold-light));transform:translateX(-50%)" class="d-none d-md-block"></div>
+
+          <!-- 1998 -->
+          <div class="row mb-5" data-fade>
+            <div class="col-md-5 text-md-end pe-md-5">
+              <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem">
+                <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--gold)">1998</div>
+                <h5 style="font-weight:700;margin-bottom:0.5rem">The Cart Begins</h5>
+                <p style="font-size:0.88rem;color:var(--text-muted)">Brothers Senguttuvan, Murugesan and Palanisamy set up a tiffin cart near Vadapalani junction with ₹12,000 and their mother's recipes. Sold 200 idlis on day one.</p>
+              </div>
+            </div>
+            <div class="col-md-2 d-none d-md-flex align-items-center justify-content-center">
+              <div style="width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.2rem;z-index:1">🍛</div>
+            </div>
+            <div class="col-md-5"></div>
+          </div>
+
+          <!-- 2003 -->
+          <div class="row mb-5" data-fade>
+            <div class="col-md-5"></div>
+            <div class="col-md-2 d-none d-md-flex align-items-center justify-content-center">
+              <div style="width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.2rem;z-index:1">🏠</div>
+            </div>
+            <div class="col-md-5 ps-md-5">
+              <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem">
+                <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--gold)">2003</div>
+                <h5 style="font-weight:700;margin-bottom:0.5rem">First Restaurant</h5>
+                <p style="font-size:0.88rem;color:var(--text-muted)">Opened a 40-seat restaurant on Anna Salai. Added North Indian and Chinese to the menu. Hired the first professional chef from IHM Chennai.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2010 -->
+          <div class="row mb-5" data-fade>
+            <div class="col-md-5 text-md-end pe-md-5">
+              <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem">
+                <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--gold)">2010</div>
+                <h5 style="font-weight:700;margin-bottom:0.5rem">Seafood & Expansion</h5>
+                <p style="font-size:0.88rem;color:var(--text-muted)">Partnered directly with Kasimedu harbour fishermen. Launched our legendary Crab Masala. Expanded to 120 seats. Won first Tamil Nadu Tourism Award.</p>
+              </div>
+            </div>
+            <div class="col-md-2 d-none d-md-flex align-items-center justify-content-center">
+              <div style="width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.2rem;z-index:1">🦞</div>
+            </div>
+            <div class="col-md-5"></div>
+          </div>
+
+          <!-- 2018 -->
+          <div class="row mb-5" data-fade>
+            <div class="col-md-5"></div>
+            <div class="col-md-2 d-none d-md-flex align-items-center justify-content-center">
+              <div style="width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.2rem;z-index:1">🏆</div>
+            </div>
+            <div class="col-md-5 ps-md-5">
+              <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem">
+                <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--gold)">2018</div>
+                <h5 style="font-weight:700;margin-bottom:0.5rem">Grand Renovation</h5>
+                <p style="font-size:0.88rem;color:var(--text-muted)">Complete renovation to 200 seats. Private dining rooms, live tandoor station, bar. Named Chennai's Best Multi-Cuisine Restaurant by The Hindu.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2024 -->
+          <div class="row" data-fade>
+            <div class="col-md-5 text-md-end pe-md-5">
+              <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;border-color:var(--gold)">
+                <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--gold)">2024</div>
+                <h5 style="font-weight:700;margin-bottom:0.5rem">Today</h5>
+                <p style="font-size:0.88rem;color:var(--text-muted)">100+ dishes, 60 staff, 25,000+ happy guests, and the same grandmother's idli recipe that started it all. The cart became a landmark.</p>
+              </div>
+            </div>
+            <div class="col-md-2 d-none d-md-flex align-items-center justify-content-center">
+              <div style="width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.2rem;z-index:1">⭐</div>
+            </div>
+            <div class="col-md-5"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION / VISION / VALUES -->
+<section class="section-pad">
+  <div class="container">
+    <div class="text-center mb-5" data-fade>
+      <span class="section-eyebrow">What Drives Us</span>
+      <h2 class="section-title">Mission, Vision & <em>Core Values</em></h2>
+      <div class="divider-gold mx-auto"></div>
+    </div>
+    <div class="row g-4 mb-5">
+      <div class="col-md-6" data-fade>
+        <div style="background:var(--charcoal);border-radius:var(--radius-lg);padding:2.5rem;height:100%">
+          <div style="font-size:2.5rem;margin-bottom:1rem">🎯</div>
+          <h3 style="font-family:var(--font-display);color:var(--gold);margin-bottom:1rem">Our Mission</h3>
+          <p style="color:rgba(255,255,255,0.7);line-height:1.8">To serve authentic, freshly prepared food that honours regional culinary traditions while offering a warm, welcoming environment where every guest feels like family — regardless of occasion or budget.</p>
+        </div>
+      </div>
+      <div class="col-md-6" data-fade>
+        <div style="background:var(--charcoal);border-radius:var(--radius-lg);padding:2.5rem;height:100%">
+          <div style="font-size:2.5rem;margin-bottom:1rem">🔭</div>
+          <h3 style="font-family:var(--font-display);color:var(--gold);margin-bottom:1rem">Our Vision</h3>
+          <p style="color:rgba(255,255,255,0.7);line-height:1.8">To become South India's most trusted family dining destination — a place where recipes are preserved, communities are nourished, and the art of cooking is celebrated as the highest form of hospitality.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Core Values -->
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6" data-fade>
+        <div class="value-card">
+          <div class="value-icon">🌿</div>
+          <div class="value-title">Freshness Always</div>
+          <p style="font-size:0.88rem;color:var(--text-muted);margin:0">No frozen shortcuts. No pre-made pastes. Everything starts from scratch, every single day.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-fade>
+        <div class="value-card">
+          <div class="value-icon">🤝</div>
+          <div class="value-title">Honest Hospitality</div>
+          <p style="font-size:0.88rem;color:var(--text-muted);margin:0">We treat every guest the way we'd want our own family to be treated — with warmth, respect and genuine care.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-fade>
+        <div class="value-card">
+          <div class="value-icon">🏘️</div>
+          <div class="value-title">Community Roots</div>
+          <p style="font-size:0.88rem;color:var(--text-muted);margin:0">We employ locally, source locally, and give back locally. Our neighbourhood made us who we are.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-fade>
+        <div class="value-card">
+          <div class="value-icon">📜</div>
+          <div class="value-title">Recipe Integrity</div>
+          <p style="font-size:0.88rem;color:var(--text-muted);margin:0">Our recipes are documented, respected and only changed with deep intention. Tradition is not a constraint — it's our compass.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEF TEAM -->
+<section class="section-pad featured-bg">
+  <div class="container">
+    <div class="text-center mb-5" data-fade>
+      <span class="section-eyebrow">The People Behind the Food</span>
+      <h2 class="section-title">Meet Our <em>Chef Team</em></h2>
+      <div class="divider-gold mx-auto"></div>
+      <p class="section-lead mx-auto" style="text-align:center">Trained at India's finest culinary schools, seasoned by decades of kitchen experience, and united by a shared love for authentic food.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6" data-fade>
+        <div class="chef-card">
+          <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=400&q=80" alt="Chef Arumugam" class="chef-img">
+          <div class="chef-info">
+            <div class="chef-name">Arumugam S.</div>
+            <div class="chef-role">Head Chef & Co-Founder</div>
+            <p style="font-size:0.82rem;color:var(--text-muted);margin-top:0.5rem">28 years in the kitchen. Specialises in Chettinad and coastal cuisines. Trained at Taj Hotel, Chennai.</p>
+            <div class="social-icons mt-2" style="gap:0.4rem">
+              <a href="#" class="social-icon" style="width:30px;height:30px;font-size:0.75rem"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-fade>
+        <div class="chef-card">
+          <img src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?w=400&q=80" alt="Chef Pradeep" class="chef-img">
+          <div class="chef-info">
+            <div class="chef-name">Pradeep Kumar</div>
+            <div class="chef-role">North Indian & Tandoor Specialist</div>
+            <p style="font-size:0.82rem;color:var(--text-muted);margin-top:0.5rem">IHM Delhi graduate. 18 years crafting biryanis and kebabs. The artist behind our Butter Chicken.</p>
+            <div class="social-icons mt-2" style="gap:0.4rem">
+              <a href="#" class="social-icon" style="width:30px;height:30px;font-size:0.75rem"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-fade>
+        <div class="chef-card">
+          <img src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?w=400&q=80" alt="Chef Mei Lin" class="chef-img">
+          <div class="chef-info">
+            <div class="chef-name">Mei Lin Wong</div>
+            <div class="chef-role">Chinese & Asian Cuisine</div>
+            <p style="font-size:0.82rem;color:var(--text-muted);margin-top:0.5rem">Trained in Singapore and Chengdu. Brings authentic Sichuan and Cantonese techniques to our Indo-Chinese menu.</p>
+            <div class="social-icons mt-2" style="gap:0.4rem">
+              <a href="#" class="social-icon" style="width:30px;height:30px;font-size:0.75rem"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-fade>
+        <div class="chef-card">
+          <img src="https://images.unsplash.com/photo-1607631568010-a87245c0daf8?w=400&q=80" alt="Chef Divya" class="chef-img">
+          <div class="chef-info">
+            <div class="chef-name">Divya Nair</div>
+            <div class="chef-role">Pastry & Dessert Chef</div>
+            <p style="font-size:0.82rem;color:var(--text-muted);margin-top:0.5rem">Le Cordon Bleu trained. Creates our dessert menu blending French patisserie with Indian mithai traditions.</p>
+            <div class="social-icons mt-2" style="gap:0.4rem">
+              <a href="#" class="social-icon" style="width:30px;height:30px;font-size:0.75rem"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY STRIP -->
+<section class="section-pad">
+  <div class="container">
+    <div class="text-center mb-5" data-fade>
+      <span class="section-eyebrow">A Glimpse Inside</span>
+      <h2 class="section-title">Restaurant <em>Gallery</em></h2>
+      <div class="divider-gold mx-auto"></div>
+    </div>
+    <div class="row g-3">
+      <div class="col-md-6 col-lg-4" data-fade>
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80" alt="Dining area" style="width:100%;height:280px;object-fit:cover;border-radius:var(--radius-lg)">
+      </div>
+      <div class="col-md-6 col-lg-4" data-fade>
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Table setting" style="width:100%;height:280px;object-fit:cover;border-radius:var(--radius-lg)">
+      </div>
+      <div class="col-md-6 col-lg-4" data-fade>
+        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80" alt="Kitchen" style="width:100%;height:280px;object-fit:cover;border-radius:var(--radius-lg)">
+      </div>
+      <div class="col-md-6 col-lg-4" data-fade>
+        <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=600&q=80" alt="Bar area" style="width:100%;height:280px;object-fit:cover;border-radius:var(--radius-lg)">
+      </div>
+      <div class="col-md-6 col-lg-4" data-fade>
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80" alt="Private dining" style="width:100%;height:280px;object-fit:cover;border-radius:var(--radius-lg)">
+      </div>
+      <div class="col-md-6 col-lg-4" data-fade>
+        <img src="https://images.unsplash.com/photo-1579027989536-b7b1f875659b?w=600&q=80" alt="Outdoor seating" style="width:100%;height:280px;object-fit:cover;border-radius:var(--radius-lg)">
+      </div>
+    </div>
+    <div class="text-center mt-4">
+      <a href="gallery.html" class="btn-outline-gold">View Full Gallery →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="section-pad featured-bg">
+  <div class="container">
+    <div class="text-center mb-5" data-fade>
+      <span class="section-eyebrow">Recognition</span>
+      <h2 class="section-title">Awards & <em>Achievements</em></h2>
+      <div class="divider-gold mx-auto"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6" data-fade>
+        <div class="achievement-card">
+          <div class="achievement-icon">🏆</div>
+          <div class="achievement-year">2010</div>
+          <h6 style="font-weight:700;margin:0.5rem 0">Tamil Nadu Tourism Award</h6>
+          <p style="font-size:0.82rem;color:var(--text-muted);margin:0">Best South Indian Restaurant, State Level</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-fade>
+        <div class="achievement-card">
+          <div class="achievement-icon">🎖️</div>
+          <div class="achievement-year">2015</div>
+          <h6 style="font-weight:700;margin:0.5rem 0">The Hindu Best Bites</h6>
+          <p style="font-size:0.82rem;color:var(--text-muted);margin:0">Top 10 Restaurants in Chennai</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-fade>
+        <div class="achievement-card">
+          <div class="achievement-icon">⭐</div>
+          <div class="achievement-year">2018</div>
+          <h6 style="font-weight:700;margin:0.5rem 0">Zomato Gold Partner</h6>
+          <p style="font-size:0.82rem;color:var(--text-muted);margin:0">4.8 Rating, 2,400+ Reviews</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-fade>
+        <div class="achievement-card">
+          <div class="achievement-icon">🌿</div>
+          <div class="achievement-year">2022</div>
+          <h6 style="font-weight:700;margin:0.5rem 0">Green Restaurant Certified</h6>
+          <p style="font-size:0.82rem;color:var(--text-muted);margin:0">Zero plastic, composting, solar energy</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CUSTOMER SATISFACTION STATS -->
+<section class="section-pad stats-bg">
+  <div class="container">
+    <div class="text-center mb-5" data-fade>
+      <h2 class="section-title" style="color:white">By The <em>Numbers</em></h2>
+      <div class="divider-gold mx-auto"></div>
+    </div>
+    <div class="row g-0">
+      <div class="col-6 col-md-3" data-fade>
+        <div class="stat-item">
+          <div class="stat-number" data-counter data-target="98" data-suffix="%">0</div>
+          <div class="stat-label">Customer Satisfaction</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-fade>
+        <div class="stat-item">
+          <div class="stat-number" data-counter data-target="2400" data-suffix="+">0</div>
+          <div class="stat-label">Online Reviews</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-fade>
+        <div class="stat-item">
+          <div class="stat-number" data-counter data-target="60" data-suffix="+">0</div>
+          <div class="stat-label">Team Members</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-fade>
+        <div class="stat-item">
+          <div class="stat-number" data-counter data-target="12">0</div>
+          <div class="stat-label">Farm Partners</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer pt-5">
+  <div class="container">
+    <div class="row g-5 pb-5">
+      <div class="col-lg-4">
+        <div class="footer-brand mb-3">SMP Food</div>
+        <p class="footer-text mb-4">Authentic flavors, modern soul. Three generations of culinary passion, served fresh every day since 1998.</p>
+        <div class="social-icons">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6">
+        <div class="footer-heading">Quick Links</div>
+        <a class="footer-link" href="index.html">Home</a>
+        <a class="footer-link" href="about.html">About Us</a>
+        <a class="footer-link" href="menu.html">Our Menu</a>
+        <a class="footer-link" href="gallery.html">Gallery</a>
+        <a class="footer-link" href="offers.html">Offers</a>
+        <a class="footer-link" href="contact.html">Contact</a>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6">
+        <div class="footer-heading">Menu</div>
+        <a class="footer-link" href="menu.html?cat=south-indian">South Indian</a>
+        <a class="footer-link" href="menu.html?cat=north-indian">North Indian</a>
+        <a class="footer-link" href="menu.html?cat=chinese">Chinese</a>
+        <a class="footer-link" href="menu.html?cat=seafood">Seafood</a>
+        <a class="footer-link" href="menu.html?cat=desserts">Desserts</a>
+        <a class="footer-link" href="menu.html?cat=beverages">Beverages</a>
+      </div>
+      <div class="col-lg-4 col-md-4">
+        <div class="footer-heading">Newsletter</div>
+        <p class="footer-text mb-3">Get weekly specials and exclusive offers.</p>
+        <form id="newsletter-form" class="newsletter-form mb-4">
+          <input type="email" placeholder="Your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+        <div class="footer-text">
+          <i class="fa fa-map-marker me-2" style="color:var(--gold)"></i>42 Anna Salai, Chennai 600002<br>
+          <i class="fa fa-phone me-2" style="color:var(--gold)"></i>+91 44 2345 6789
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <p>© 2024 SMP Food Restaurant. All rights reserved.</p>
+      <p>Made with ❤️ in Chennai</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/cart.js"></script>
+<script src="assets/js/script.js"></script>
+</body>
+</html>

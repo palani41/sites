@@ -1,0 +1,1812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SMP Gym Kovilpatti | Strength &amp; Conditioning Studio</title>
+    <meta name="description" content="SMP Gym in Kovilpatti, Tamil Nadu — strength training, fat loss, bodybuilding and personal coaching with certified trainers and modern equipment.">
+    <meta name="keywords" content="Gym in Kovilpatti, Best Gym in Kovilpatti, Fitness Center Kovilpatti, Bodybuilding Gym Kovilpatti, Weight Loss Gym Kovilpatti, SMP Gym">
+    <meta name="author" content="SMP Gym">
+
+    <meta property="og:title" content="SMP Gym Kovilpatti | Strength & Conditioning Studio">
+    <meta property="og:description" content="Train with purpose. Strength training, fat loss and bodybuilding coaching in Kovilpatti.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <style>
+/* ==========================================================================
+   SMP GYM — Kovilpatti
+   Design system: iron, plates, discipline.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+    --ink: #0E0E0F;
+    --ink-soft: #17171A;
+    --panel: #1C1C20;
+    --bone: #F5F3EE;
+    --bone-dim: #C9C6BE;
+    --steel: #8A8782;
+    --rust: #C1432A;
+    --rust-bright: #E0552F;
+    --brass: #B8975A;
+    --line: rgba(245, 243, 238, 0.08);
+    --line-strong: rgba(245, 243, 238, 0.16);
+
+    --display: 'Bebas Neue', 'Arial Narrow', sans-serif;
+    --body: 'Inter', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    background: var(--ink);
+    color: var(--bone);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--rust); color: var(--bone); }
+::-webkit-scrollbar { width: 9px; }
+::-webkit-scrollbar-track { background: var(--ink); }
+::-webkit-scrollbar-thumb { background: var(--rust); border-radius: 0; }
+
+a { text-decoration: none; transition: color .25s ease; }
+img { display: block; max-width: 100%; }
+
+/* ==========================================================================
+   Typography primitives
+   ========================================================================== */
+
+.display {
+    font-family: var(--display);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-weight: 400;
+    line-height: 1.02;
+}
+
+.mono { font-family: var(--mono); }
+
+.eyebrow {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--rust-bright);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.2rem;
+}
+.eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--rust-bright);
+}
+
+.text-steel { color: var(--steel); }
+.text-bone-dim { color: var(--bone-dim); }
+.text-rust { color: var(--rust-bright); }
+
+/* ==========================================================================
+   Plate-stack divider — the signature device
+   ========================================================================== */
+
+.plate-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin: 0 auto 2.5rem;
+}
+.plate-stack span {
+    display: block;
+    height: 4px;
+    border-radius: 1px;
+}
+.plate-stack span:nth-child(1) { width: 64px; background: var(--rust); }
+.plate-stack span:nth-child(2) { width: 40px; background: var(--steel); }
+.plate-stack span:nth-child(3) { width: 16px; background: var(--line-strong); }
+
+.plate-rule {
+    border: none;
+    height: 1px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--line-strong) 0, var(--line-strong) 18px,
+        transparent 18px, transparent 36px
+    );
+    margin: 0;
+}
+
+/* ==========================================================================
+   Layout utilities
+   ========================================================================== */
+
+.section { padding: 7rem 0; position: relative; }
+.section-tight { padding: 4rem 0; }
+.section-head { margin-bottom: 3.5rem; }
+.section-head h2 { font-size: clamp(2.4rem, 5vw, 4rem); }
+
+.bg-panel { background: var(--ink-soft); }
+
+.container-narrow { max-width: 760px; margin: 0 auto; }
+
+.container-main {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* ==========================================================================
+   Navbar
+   ========================================================================== */
+
+.gym-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 1.4rem 0;
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    transition: background .35s ease, border-color .35s ease, padding .35s ease;
+}
+.gym-nav.scrolled {
+    background: rgba(14, 14, 15, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom-color: var(--line);
+    padding: 0.9rem 0;
+}
+.gym-nav .wrap {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.gym-brand {
+    font-family: var(--display);
+    font-size: 1.7rem;
+    letter-spacing: 0.08em;
+    color: var(--bone);
+    line-height: 1;
+}
+.gym-brand span { color: var(--rust-bright); }
+
+.gym-links {
+    display: flex;
+    gap: 2.1rem;
+    list-style: none;
+    align-items: center;
+}
+.gym-links a {
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    padding: 0.4rem 0;
+    border-bottom: 1px solid transparent;
+}
+.gym-links a:hover, .gym-links a.active {
+    color: var(--bone);
+    border-bottom-color: var(--rust);
+}
+
+.gym-nav-cta {
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--bone);
+    padding: 0.65rem 1.3rem;
+    border: 1px solid var(--bone);
+    transition: all .25s ease;
+}
+.gym-nav-cta:hover { background: transparent; color: var(--bone); }
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--line-strong);
+    color: var(--bone);
+    width: 42px; height: 42px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .nav-toggle { display: flex; align-items: center; justify-content: center; }
+    .gym-links {
+        position: fixed;
+        top: 0; right: -100%;
+        width: 78%; max-width: 320px; height: 100vh;
+        background: var(--ink-soft);
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 1.8rem;
+        padding: 2rem;
+        border-left: 1px solid var(--line);
+        transition: right .4s cubic-bezier(.16,1,.3,1);
+        z-index: 1001;
+    }
+    .gym-links.open { right: 0; }
+    .gym-links a { font-size: 0.95rem; }
+    .gym-nav-cta { display: none; }
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all .25s ease;
+    white-space: nowrap;
+}
+.btn-rust { background: var(--rust); color: var(--bone); border-color: var(--rust); }
+.btn-rust:hover { background: transparent; color: var(--rust-bright); border-color: var(--rust-bright); }
+
+.btn-line { background: transparent; color: var(--bone); border-color: var(--line-strong); }
+.btn-line:hover { border-color: var(--bone); }
+
+.btn-block { width: 100%; justify-content: center; }
+
+.btn-icon-only {
+    width: 48px; height: 48px;
+    padding: 0;
+    justify-content: center;
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    padding-top: 100px;
+    padding-bottom: 5rem;
+}
+.hero-bg {
+    position: absolute; inset: 0;
+    background:
+        linear-gradient(180deg, rgba(14,14,15,0.35) 0%, rgba(14,14,15,0.55) 55%, var(--ink) 100%),
+        url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80') center 30% / cover no-repeat;
+    z-index: -1;
+}
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 3rem;
+    align-items: end;
+}
+.hero-kicker {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--rust-bright);
+    margin-bottom: 1.4rem;
+}
+.hero h1 {
+    font-size: clamp(3.4rem, 9vw, 7.2rem);
+    color: var(--bone);
+    margin-bottom: 1.6rem;
+}
+.hero h1 em {
+    font-style: normal;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--bone);
+}
+.hero-lede {
+    font-size: 1.05rem;
+    color: var(--bone-dim);
+    max-width: 480px;
+    margin-bottom: 2.4rem;
+}
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.hero-readout {
+    border-left: 1px solid var(--line-strong);
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+.readout-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--steel);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 1.1rem;
+}
+.readout-row .val {
+    font-size: 1.6rem;
+    color: var(--bone);
+    letter-spacing: 0;
+}
+
+@media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-readout { border-left: none; border-top: 1px solid var(--line-strong); padding-left: 0; padding-top: 2rem; }
+}
+
+/* ==========================================================================
+   About / stat grid
+   ========================================================================== */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+.about-copy p { max-width: 460px; }
+.about-copy { margin-bottom: 2.5rem; }
+
+.feature-list { display: flex; flex-direction: column; }
+.feature-row {
+    display: flex;
+    align-items: baseline;
+    gap: 1.4rem;
+    padding: 1.4rem 0;
+    border-top: 1px solid var(--line);
+}
+.feature-row:last-child { border-bottom: 1px solid var(--line); }
+.feature-num {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--rust-bright);
+    flex-shrink: 0;
+    width: 2.4rem;
+}
+.feature-row h5 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.25rem; }
+.feature-row p { font-size: 0.9rem; color: var(--steel); margin: 0; }
+
+.stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+}
+.stat-cell {
+    background: var(--ink);
+    padding: 2.2rem 1.6rem;
+}
+.stat-num {
+    font-family: var(--mono);
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: var(--bone);
+    line-height: 1;
+    display: flex;
+    align-items: baseline;
+    gap: 0.2rem;
+}
+.stat-num .unit { font-size: 1.2rem; color: var(--rust-bright); }
+.stat-label {
+    font-size: 0.74rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--steel);
+    margin-top: 0.6rem;
+}
+
+@media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+/* ==========================================================================
+   Programs
+   ========================================================================== */
+
+.programs-rail {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+}
+.program-card {
+    background: var(--ink);
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    cursor: default;
+}
+.program-card img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(40%) brightness(0.7);
+    transition: transform .7s cubic-bezier(.16,1,.3,1), filter .5s ease;
+}
+.program-card:hover img { transform: scale(1.06); filter: grayscale(0%) brightness(0.85); }
+.program-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(14,14,15,0.95) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.4rem;
+}
+.program-tag {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rust-bright);
+    margin-bottom: 0.4rem;
+}
+.program-overlay h4 { font-size: 1.3rem; color: var(--bone); margin-bottom: 0.3rem; }
+.program-overlay p {
+    font-size: 0.82rem;
+    color: var(--bone-dim);
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height .4s ease, opacity .3s ease;
+}
+.program-card:hover .program-overlay p { max-height: 4.5em; opacity: 1; margin-top: 0.4rem; }
+
+@media (max-width: 1100px) { .programs-rail { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .programs-rail { grid-template-columns: 1fr; } .program-card { aspect-ratio: 16/10; } }
+
+/* ==========================================================================
+   Trainers
+   ========================================================================== */
+
+.trainer-rail {
+    display: flex;
+    gap: 1px;
+    overflow-x: auto;
+    background: var(--line);
+    border: 1px solid var(--line);
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+}
+.trainer-rail::-webkit-scrollbar { display: none; }
+.trainer-card {
+    background: var(--ink);
+    flex: 0 0 260px;
+    scroll-snap-align: start;
+}
+.trainer-photo {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+}
+.trainer-photo img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(55%);
+    transition: filter .4s ease;
+}
+.trainer-card:hover .trainer-photo img { filter: grayscale(0%); }
+.trainer-info { padding: 1.3rem; }
+.trainer-info h5 { font-size: 1.15rem; margin-bottom: 0.15rem; }
+.trainer-role {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--rust-bright);
+    margin-bottom: 0.7rem;
+}
+.trainer-info p { font-size: 0.85rem; color: var(--steel); margin: 0; }
+
+/* ==========================================================================
+   Pricing
+   ========================================================================== */
+
+.pricing-toggle {
+    display: inline-flex;
+    border: 1px solid var(--line-strong);
+    margin-bottom: 3.5rem;
+}
+.pricing-toggle button {
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    background: none;
+    border: none;
+    color: var(--steel);
+    padding: 0.85rem 1.8rem;
+    cursor: pointer;
+    transition: all .25s ease;
+}
+.pricing-toggle button.active { background: var(--rust); color: var(--bone); }
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+}
+.price-card {
+    background: var(--ink);
+    padding: 2.6rem 2.2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.price-card.featured { background: var(--ink-soft); }
+.price-card.featured::before {
+    content: 'Most chosen';
+    position: absolute;
+    top: 0; right: 0;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--rust-bright);
+    padding: 0.4rem 0.9rem;
+}
+.price-tier {
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--steel);
+    margin-bottom: 1.4rem;
+}
+.price-value {
+    font-family: var(--mono);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--bone);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+}
+.price-value .per { font-size: 0.9rem; color: var(--steel); font-weight: 400; }
+.price-card h3 { font-size: 1.7rem; margin-bottom: 1.6rem; }
+.price-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 2.2rem; flex: 1; }
+.price-list li {
+    font-size: 0.88rem;
+    color: var(--bone-dim);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+}
+.price-list li.off { color: var(--steel); text-decoration: line-through; opacity: 0.6; }
+.price-list .mark { color: var(--rust-bright); font-family: var(--mono); flex-shrink: 0; }
+
+@media (max-width: 900px) { .pricing-grid { grid-template-columns: 1fr; } }
+
+/* ==========================================================================
+   Gallery
+   ========================================================================== */
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, 220px);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+}
+.gallery-cell { position: relative; overflow: hidden; cursor: pointer; }
+.gallery-cell img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(35%);
+    transition: transform .6s cubic-bezier(.16,1,.3,1), filter .4s ease;
+}
+.gallery-cell:hover img { transform: scale(1.07); filter: grayscale(0%); }
+.gallery-cell.wide { grid-column: span 2; }
+
+@media (max-width: 1100px) {
+    .gallery-grid { grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(4, 180px); }
+    .gallery-cell.wide { grid-column: span 1; }
+}
+@media (max-width: 640px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(6, 160px); }
+}
+
+/* ==========================================================================
+   BMI panel
+   ========================================================================== */
+
+.bmi-panel {
+    border: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.bmi-form-side { padding: 3rem; }
+.bmi-result-side {
+    background: var(--ink-soft);
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.field { margin-bottom: 1.4rem; }
+.lead-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 1.4rem;
+}
+@media (max-width: 540px) {
+    .lead-row { grid-template-columns: 1fr; }
+}
+.field label {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--steel);
+    margin-bottom: 0.6rem;
+}
+.field input, .field select, .field textarea {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--line-strong);
+    color: var(--bone);
+    padding: 0.9rem 1rem;
+    font-family: var(--body);
+    font-size: 0.95rem;
+    border-radius: 0;
+    transition: border-color .2s ease;
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+    outline: none;
+    border-color: var(--rust-bright);
+}
+.field input.is-invalid, .field select.is-invalid, .field textarea.is-invalid {
+    border-color: var(--rust-bright);
+    background: rgba(193,67,42,0.06);
+}
+.field textarea { resize: vertical; min-height: 110px; }
+.field select { cursor: pointer; }
+.field select option { background: var(--ink); }
+
+.bmi-readout-num {
+    font-family: var(--mono);
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--bone);
+    margin-bottom: 0.5rem;
+}
+.bmi-readout-cat {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 1.4rem;
+}
+.bmi-readout-advice {
+    font-size: 0.92rem;
+    color: var(--bone-dim);
+    border-top: 1px solid var(--line);
+    padding-top: 1.4rem;
+}
+.bmi-scale {
+    display: flex;
+    height: 6px;
+    margin-top: 1.6rem;
+    border-radius: 1px;
+    overflow: hidden;
+}
+.bmi-scale span { flex: 1; }
+.bmi-scale .seg-1 { background: #D9A23B; }
+.bmi-scale .seg-2 { background: #5E8C5A; }
+.bmi-scale .seg-3 { background: var(--brass); }
+.bmi-scale .seg-4 { background: var(--rust); }
+.bmi-marker {
+    position: relative;
+    height: 14px;
+    margin-top: -10px;
+}
+.bmi-marker::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: var(--marker-pos, 0%);
+    width: 2px; height: 14px;
+    background: var(--bone);
+    transition: left .6s cubic-bezier(.16,1,.3,1);
+}
+
+@media (max-width: 900px) {
+    .bmi-panel { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
+   Testimonials
+   ========================================================================== */
+
+.testi-track {
+    display: flex;
+    overflow-x: auto;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+.testi-track::-webkit-scrollbar { display: none; }
+.testi-card {
+    background: var(--ink);
+    flex: 0 0 100%;
+    padding: 3rem;
+    scroll-snap-align: start;
+}
+@media (min-width: 768px) { .testi-card { flex: 0 0 50%; } }
+.testi-quote {
+    font-family: var(--display);
+    font-size: 1.7rem;
+    line-height: 1.35;
+    color: var(--bone);
+    margin-bottom: 1.6rem;
+    text-transform: none;
+    letter-spacing: 0;
+}
+.testi-name { font-weight: 700; margin-bottom: 0.1rem; }
+.testi-role {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--rust-bright);
+}
+
+/* ==========================================================================
+   Contact
+   ========================================================================== */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+}
+.contact-side { padding: 3rem; }
+.contact-form-side { padding: 3rem; background: var(--ink-soft); }
+.contact-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--steel);
+}
+.contact-line a, .contact-line span.val {
+    font-size: 1.05rem;
+    letter-spacing: 0;
+    color: var(--bone);
+    font-family: var(--body);
+    text-transform: none;
+}
+.contact-line a:hover { color: var(--rust-bright); }
+
+.hours-list { margin-top: 2rem; }
+.hours-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+    color: var(--bone-dim);
+}
+.hours-row .day { color: var(--bone); font-weight: 600; }
+
+@media (max-width: 900px) {
+    .contact-grid { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
+   Map
+   ========================================================================== */
+
+.map-frame {
+    border: 1px solid var(--line);
+    filter: grayscale(100%) invert(92%) contrast(85%);
+    height: 340px;
+}
+.map-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.gym-footer {
+    border-top: 1px solid var(--line);
+    padding: 2.2rem 0;
+    text-align: center;
+}
+.gym-footer p {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--steel);
+}
+.gym-footer p span { color: var(--rust-bright); }
+
+/* ==========================================================================
+   Floating actions
+   ========================================================================== */
+
+.fab-stack {
+    position: fixed;
+    bottom: 2rem; right: 2rem;
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+.fab {
+    width: 52px; height: 52px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--bone);
+    font-size: 1.25rem;
+    border: 1px solid var(--line-strong);
+    background: var(--ink-soft);
+    transition: all .25s ease;
+}
+.fab:hover { border-color: var(--rust-bright); color: var(--rust-bright); transform: translateY(-2px); }
+.fab-whatsapp:hover { color: #25D366; border-color: #25D366; }
+.fab-scrolltop {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(8px);
+    transition: all .25s ease;
+}
+.fab-scrolltop.show { opacity: 1; pointer-events: all; transform: translateY(0); }
+
+.mobile-bar {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; width: 100%;
+    background: rgba(14,14,15,0.97);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--line);
+    z-index: 950;
+}
+.mobile-bar .wrap { display: flex; }
+.mobile-bar a {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.8rem 0;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    border-right: 1px solid var(--line);
+}
+.mobile-bar a:last-child { border-right: none; }
+.mobile-bar a i { font-size: 1.1rem; }
+
+@media (max-width: 767px) {
+    .mobile-bar { display: block; }
+    body { padding-bottom: 64px; }
+    .fab-stack { display: none; }
+}
+
+/* ==========================================================================
+   Preloader
+   ========================================================================== */
+
+#preloader {
+    position: fixed; inset: 0;
+    background: var(--ink);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity .5s ease;
+}
+.preloader-mark {
+    font-family: var(--display);
+    font-size: 2.4rem;
+    letter-spacing: 0.1em;
+    color: var(--bone);
+    margin-bottom: 1.6rem;
+}
+.preloader-mark span { color: var(--rust-bright); }
+.preloader-bar {
+    width: 180px; height: 2px;
+    background: var(--line-strong);
+    overflow: hidden;
+}
+.preloader-bar i {
+    display: block;
+    height: 100%;
+    width: 0%;
+    background: var(--rust);
+    animation: loadbar 1.1s ease forwards;
+}
+@keyframes loadbar { to { width: 100%; } }
+
+/* ==========================================================================
+   Reveal-on-scroll
+   ========================================================================== */
+
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .7s ease, transform .7s ease;
+}
+[data-reveal].visible { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+    [data-reveal] { opacity: 1; transform: none; transition: none; }
+    .preloader-bar i { animation: none; width: 100%; }
+}
+
+/* ==========================================================================
+   Responsive section sizing
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .section { padding: 4.5rem 0; }
+    .section-head h2 { font-size: 2.4rem; }
+}
+
+</style>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ExerciseGym",
+        "name": "SMP Gym Kovilpatti",
+        "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80",
+        "telephone": "+919361315289",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Kovilpatti",
+            "addressRegion": "Tamil Nadu",
+            "addressCountry": "IN"
+        },
+        "openingHours": "Mo-Sa 05:00-22:00"
+    }
+    </script>
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader" aria-hidden="true">
+        <div class="preloader-mark">SMP <span>GYM</span></div>
+        <div class="preloader-bar"><i></i></div>
+    </div>
+
+    <!-- ============================== NAV ============================== -->
+    <nav class="gym-nav">
+        <div class="wrap">
+            <a href="#home" class="gym-brand">SMP <span>GYM</span></a>
+            <ul class="gym-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#trainers">Trainers</a></li>
+                <li><a href="#membership">Membership</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#bmi">BMI Check</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#contact" class="gym-nav-cta">Join now</a>
+            <button class="nav-toggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- ============================== HERO ============================== -->
+    <section id="home" class="hero">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="wrap" style="max-width:1240px;margin:0 auto;padding:0 1.5rem;width:100%;">
+            <div class="hero-grid">
+                <div data-reveal>
+                    <div class="hero-kicker">Kovilpatti, Tamil Nadu — Est. local strength studio</div>
+                    <h1 class="display">Train with <em>purpose.</em><br>Not just sweat.</h1>
+                    <p class="hero-lede">SMP Gym is a no-nonsense strength and conditioning space in Kovilpatti. Real equipment, real coaching, and a plan built around your goal — whether that's losing weight, gaining muscle, or simply getting stronger than last month.</p>
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn btn-rust">Book a free trial</a>
+                        <a href="#programs" class="btn btn-line">See programs</a>
+                    </div>
+                </div>
+                <div class="hero-readout" data-reveal>
+                    <div class="readout-row"><span>Floor space</span><span class="val">4,200 sq ft</span></div>
+                    <div class="readout-row"><span>Open hours</span><span class="val">5 AM – 10 PM</span></div>
+                    <div class="readout-row"><span>Coaches on floor</span><span class="val">12</span></div>
+                    <div class="readout-row"><span>Members trained</span><span class="val">1,500+</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== ABOUT ============================== -->
+    <section id="about" class="section">
+        <div class="wrap" style="max-width:1240px;margin:0 auto;padding:0 1.5rem;">
+            <div class="about-grid">
+                <div data-reveal>
+                    <div class="eyebrow">About SMP Gym</div>
+                    <h2 class="display section-head" style="margin-bottom:1.5rem;">Built by people<br>who lift here too.</h2>
+                    <div class="about-copy">
+                        <p class="text-bone-dim">SMP Gym started as a single room with secondhand plates and a clear idea: Kovilpatti deserved a gym where the equipment works, the coaching is honest, and nobody feels out of place on day one.</p>
+                        <p class="text-bone-dim" style="margin-top:1rem;">Today that's grown into a full strength and conditioning floor — but the idea hasn't changed. Every program here is built around what you can actually stick to.</p>
+                    </div>
+                    <div class="feature-list">
+                        <div class="feature-row">
+                            <span class="feature-num mono">01</span>
+                            <div>
+                                <h5>Coaching that adjusts to you</h5>
+                                <p>Every member gets a starting assessment and a program that's reviewed and adjusted as you progress — not a generic printout.</p>
+                            </div>
+                        </div>
+                        <div class="feature-row">
+                            <span class="feature-num mono">02</span>
+                            <div>
+                                <h5>Equipment that's actually maintained</h5>
+                                <p>150+ pieces of imported strength and cardio equipment, serviced on a fixed schedule so nothing's ever "out of order."</p>
+                            </div>
+                        </div>
+                        <div class="feature-row">
+                            <span class="feature-num mono">03</span>
+                            <div>
+                                <h5>Straight talk on nutrition</h5>
+                                <p>No fad diets. Our coaches help you build eating habits around your routine, your budget, and food you'll actually eat.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-reveal>
+                    <div class="stat-grid">
+                        <div class="stat-cell">
+                            <div class="stat-num"><span class="js-count" data-target="1500">0</span><span class="unit">+</span></div>
+                            <div class="stat-label">Members trained</div>
+                        </div>
+                        <div class="stat-cell">
+                            <div class="stat-num"><span class="js-count" data-target="12">0</span></div>
+                            <div class="stat-label">Coaches on staff</div>
+                        </div>
+                        <div class="stat-cell">
+                            <div class="stat-num"><span class="js-count" data-target="150">0</span><span class="unit">+</span></div>
+                            <div class="stat-label">Equipment pieces</div>
+                        </div>
+                        <div class="stat-cell">
+                            <div class="stat-num"><span class="js-count" data-target="98">0</span><span class="unit">%</span></div>
+                            <div class="stat-label">Members who renew</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:2.5rem;border:1px solid var(--line); padding:2rem;">
+                        <div class="eyebrow" style="margin-bottom:1rem;">A typical first week</div>
+                        <div class="hours-row"><span class="day">Day 1</span><span>Assessment — mobility, posture, goal-setting</span></div>
+                        <div class="hours-row"><span class="day">Day 2–4</span><span>Foundational lifts, technique correction</span></div>
+                        <div class="hours-row"><span class="day">Day 5</span><span>Program review with your coach</span></div>
+                        <div class="hours-row"><span class="day">Day 7</span><span>First check-in — adjust load &amp; targets</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="plate-rule">
+
+    <!-- ============================== PROGRAMS ============================== -->
+    <section id="programs" class="section bg-panel">
+        <div class="wrap" style="max-width:1240px;margin:0 auto;padding:0 1.5rem;">
+            <div class="section-head" data-reveal>
+                <div class="eyebrow">What you can train for</div>
+                <h2 class="display">Eight ways<br>to get stronger.</h2>
+            </div>
+        </div>
+        <div class="wrap" style="max-width:1240px;margin:0 auto;padding:0 1.5rem;" data-reveal>
+            <div class="programs-rail">
+                <div class="program-card">
+                    <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80" alt="Weight loss training">
+                    <div class="program-overlay">
+                        <div class="program-tag">Fat loss</div>
+                        <h4 class="display">Weight loss</h4>
+                        <p>Structured cardio and resistance work paired with diet guidance to bring steady, lasting results.</p>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=600&q=80" alt="Muscle building training">
+                    <div class="program-overlay">
+                        <div class="program-tag">Hypertrophy</div>
+                        <h4 class="display">Muscle gain</h4>
+                        <p>Progressive resistance training designed to build muscle size and density over time.</p>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80" alt="Strength training">
+                    <div class="program-overlay">
+                        <div class="program-tag">Power</div>
+                        <h4 class="display">Strength training</h4>
+                        <p>Squat, bench, deadlift and overhead press — programmed for real, measurable strength gains.</p>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=600&q=80" alt="Personal training session">
+                    <div class="program-overlay">
+                        <div class="program-tag">1-on-1</div>
+                        <h4 class="display">Personal training</h4>
+                        <p>One coach, one plan, fully built around your schedule, injuries, and goals.</p>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&w=600&q=80" alt="Women's fitness training">
+                    <div class="program-overlay">
+                        <div class="program-tag">Women's fitness</div>
+                        <h4 class="display">Women's program</h4>
+                        <p>Toning, strength and conditioning in a comfortable, supportive training environment.</p>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <img src="https://images.unsplash.com/photo-1517344884509-a0c97ec11bcc?auto=format&fit=crop&w=600&q=80" alt="CrossFit style training">
+                    <div class="program-overlay">
+                        <div class="program-tag">Conditioning</div>
+                        <h4 class="display">CrossFit-style</h4>
+                        <p>High-intensity functional circuits that build conditioning fast.</p>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <img src="https://images.unsplash.com/photo-1434682881908-b43d0467b798?auto=format&fit=crop&w=600&q=80" alt="Functional movement training">
+                    <div class="program-overlay">
+                        <div class="program-tag">Mobility</div>
+                        <h4 class="display">Functional training</h4>
+                        <p>Movement-based work that improves mobility and everyday performance.</p>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=600&q=80" alt="Bodybuilding training">
+                    <div class="program-overlay">
+                        <div class="program-tag">Physique</div>
+                        <h4 class="display">Bodybuilding</h4>
+                        <p>Targeted muscle development for symmetry, size and stage-ready conditioning.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== WHY US ============================== -->
+    <section class="section">
+        <div class="wrap" style="max-width:1240px;margin:0 auto;padding:0 1.5rem;">
+            <div class="section-head" data-reveal>
+                <div class="eyebrow">Why train here</div>
+                <h2 class="display">Fewer excuses,<br>better setup.</h2>
+            </div>
+            <div class="about-grid" data-reveal>
+                <div class="feature-list" style="grid-column: span 1;">
+                    <div class="feature-row">
+                        <span class="feature-num mono"><i class="fa-solid fa-medal"></i></span>
+                        <div>
+                            <h5>Certified coaches</h5>
+                            <p>Every trainer on our floor holds a recognised certification in exercise science or strength coaching — not just gym experience.</p>
+                        </div>
+                    </div>
+                    <div class="feature-row">
+                        <span class="feature-num mono"><i class="fa-solid fa-dumbbell"></i></span>
+                        <div>
+                            <h5>Real equipment, properly spaced</h5>
+                            <p>Imported racks, plates and machines with enough floor space that you're never waiting in line for a bar.</p>
+                        </div>
+                    </div>
+                    <div class="feature-row">
+                        <span class="feature-num mono"><i class="fa-solid fa-hand-holding-dollar"></i></span>
+                        <div>
+                            <h5>Pricing with no surprises</h5>
+                            <p>What you see on our membership plans is what you pay — no hidden joining fees or locked-in contracts.</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="border:1px solid var(--line); position:relative; min-height:340px; overflow:hidden;">
+                    <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=900&q=80" alt="SMP Gym training floor" style="width:100%;height:100%;object-fit:cover;filter:grayscale(30%);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="plate-rule">
+
+    <!-- ============================== TRAINERS ============================== -->
+    <section id="trainers" class="section bg-panel">
+        <div class="wrap" style="max-width:1240px;margin:0 auto;padding:0 1.5rem;">
+            <div class="section-head" data-reveal>
+                <div class="eyebrow">The coaching floor</div>
+                <h2 class="display">Twelve coaches.<br>One goal — yours.</h2>
+            </div>
+        </div>
+        <div class="wrap" style="max-width:1240px;margin:0 auto;padding:0 1.5rem;" data-reveal>
+            <div class="trainer-rail">
+                <div class="trainer-card">
+                    <div class="trainer-photo"><img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=500&q=80" alt="Vikram Rathore"></div>
+                    <div class="trainer-info">
+                        <h5>Vikram Rathore</h5>
+                        <div class="trainer-role">Head coach · 9 yrs</div>
+                        <p>Specialises in competitive bodybuilding prep and structured strength cycles.</p>
+                    </div>
+                </div>
+                <div class="trainer-card">
+                    <div class="trainer-photo"><img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=500&q=80" alt="Arun Kumar"></div>
+                    <div class="trainer-info">
+                        <h5>Arun Kumar</h5>
+                        <div class="trainer-role">Strength coach · 6 yrs</div>
+                        <p>Focuses on technique correction and progressive powerlifting programming.</p>
+                    </div>
+                </div>
+                <div class="trainer-card">
+                    <div class="trainer-photo"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=500&q=80" alt="Priya Sharma"></div>
+                    <div class="trainer-info">
+                        <h5>Priya Sharma</h5>
+                        <div class="trainer-role">Women's coach · 5 yrs</div>
+                        <p>Builds toning and core-strength programs tailored to each member's pace.</p>
+                    </div>
+                </div>
+                <div class="trainer-card">
+                    <div class="trainer-photo"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80" alt="Rahul David"></div>
+                    <div class="trainer-info">
+                        <h5>Rahul David</h5>
+                        <div class="trainer-role">Mobility coach · 4 yrs</div>
+                        <p>Works on bodyweight movement quality, balance and joint health.</p>
+                    </div>
+                </div>
+                <div class="trainer-card">
+                    <div class="trainer-photo"><img src="https://images.unsplash.com/photo-1620122303020-43ec4b6cf7f8?auto=format&fit=crop&w=500&q=80" alt="Sanjay Dutt"></div>
+                    <div class="trainer-info">
+                        <h5>Sanjay Dutt</h5>
+                        <div class="trainer-role">Contest prep · 8 yrs</div>
+                        <p>Guides athletes through competition prep cycles, peaking and recovery.</p>
+                    </div>
+                </div>
+                <div class="trainer-card">
+                    <div class="trainer-photo"><img src="https://images.unsplash.com/photo-1548690312-e3b507d8c110?auto=format&fit=crop&w=500&q=80" alt="Deepika R"></div>
+                    <div class="trainer-info">
+                        <h5>Deepika R.</h5>
+                        <div class="trainer-role">Conditioning coach · 4 yrs</div>
+                        <p>Runs our HIIT and endurance circuits with heart-rate based pacing.</p>
+                    </div>
+                </div>
+                <div class="trainer-card">
+                    <div class="trainer-photo"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80" alt="Manoj Kumar"></div>
+                    <div class="trainer-info">
+                        <h5>Manoj Kumar</h5>
+                        <div class="trainer-role">Strength coach · 7 yrs</div>
+                        <p>Specialises in compound lift technique and raw strength development.</p>
+                    </div>
+                </div>
+                <div class="trainer-card">
+                    <div class="trainer-photo"><img src="https://images.unsplash.com/photo-1605462863863-10d9e47e15ee?auto=format&fit=crop&w=500&q=80" alt="Karan Thapar"></div>
+                    <div class="trainer-info">
+                        <h5>Karan Thapar</h5>
+                        <div class="trainer-role">Nutrition coach · 5 yrs</div>
+                        <p>Builds practical meal plans around your routine, budget and preferences.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== MEMBERSHIP ============================== -->
+    <section id="membership" class="section">
+        <div class="wrap" style="max-width:1240px;margin:0 auto;padding:0 1.5rem;">
+            <div class="section-head" data-reveal>
+                <div class="eyebrow">Membership</div>
+                <h2 class="display">Pick a plan,<br>not a contract.</h2>
+            </div>
+
+            <div data-reveal>
+                <div class="pricing-toggle">
+                    <button type="button" class="active" data-period="monthly">Monthly</button>
+                    <button type="button" data-period="annual">Annual</button>
+                </div>
+            </div>
+
+            <div class="pricing-grid" data-reveal>
+                <div class="price-card">
+                    <div class="price-tier">Basic</div>
+                    <div class="price-value" data-monthly="&#8377;1,500<span class='per'>/mo</span>" data-annual="&#8377;14,000<span class='per'>/yr</span>">&#8377;1,500<span class="per">/mo</span></div>
+                    <h3 class="display">Get started</h3>
+                    <ul class="price-list">
+                        <li><span class="mark">+</span> Full gym floor access</li>
+                        <li><span class="mark">+</span> Locker access</li>
+                        <li><span class="mark">+</span> Cardio deck access</li>
+                        <li class="off"><span class="mark">–</span> Personal trainer</li>
+                        <li class="off"><span class="mark">–</span> Nutrition plan</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-line btn-block">Enquire</a>
+                </div>
+
+                <div class="price-card featured">
+                    <div class="price-tier">Premium</div>
+                    <div class="price-value" data-monthly="&#8377;3,000<span class='per'>/mo</span>" data-annual="&#8377;28,000<span class='per'>/yr</span>">&#8377;3,000<span class="per">/mo</span></div>
+                    <h3 class="display">Train properly</h3>
+                    <ul class="price-list">
+                        <li><span class="mark">+</span> 24/7 access</li>
+                        <li><span class="mark">+</span> Shower &amp; sauna access</li>
+                        <li><span class="mark">+</span> 2 coach check-ins / month</li>
+                        <li><span class="mark">+</span> Starter nutrition guide</li>
+                        <li class="off"><span class="mark">–</span> Dedicated personal trainer</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-rust btn-block">Enquire</a>
+                </div>
+
+                <div class="price-card">
+                    <div class="price-tier">Elite</div>
+                    <div class="price-value" data-monthly="&#8377;5,000<span class='per'>/mo</span>" data-annual="&#8377;48,000<span class='per'>/yr</span>">&#8377;5,000<span class="per">/mo</span></div>
+                    <h3 class="display">Go all in</h3>
+                    <ul class="price-list">
+                        <li><span class="mark">+</span> Everything in Premium</li>
+                        <li><span class="mark">+</span> Dedicated personal trainer</li>
+                        <li><span class="mark">+</span> Body composition tracking</li>
+                        <li><span class="mark">+</span> Custom macro plan</li>
+                        <li><span class="mark">+</span> Priority booking</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-line btn-block">Enquire</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="plate-rule">
+
+    <!-- ============================== GALLERY ============================== -->
+    <section id="gallery" class="section bg-panel">
+        <div class="wrap" style="max-width:1240px;margin:0 auto;padding:0 1.5rem;">
+            <div class="section-head" data-reveal>
+                <div class="eyebrow">Inside the gym</div>
+                <h2 class="display">The floor,<br>not the brochure.</h2>
+            </div>
+        </div>
+        <div class="wrap" style="max-width:1240px;margin:0 auto;padding:0 1.5rem;" data-reveal>
+            <div class="gallery-grid">
+                <div class="gallery-cell wide"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=80" alt="Gym training floor"></div>
+                <div class="gallery-cell"><img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80" alt="Dumbbell rack"></div>
+                <div class="gallery-cell"><img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=600&q=80" alt="Athlete training"></div>
+                <div class="gallery-cell wide"><img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?auto=format&fit=crop&w=900&q=80" alt="Squat platform"></div>
+                <div class="gallery-cell"><img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&w=600&q=80" alt="Cardio area"></div>
+                <div class="gallery-cell"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80" alt="Weight plates"></div>
+                <div class="gallery-cell"><img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=600&q=80" alt="Resistance training"></div>
+                <div class="gallery-cell wide"><img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=900&q=80" alt="Full gym floor"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== BMI ============================== -->
+    <section id="bmi" class="section">
+        <div class="wrap" style="max-width:1240px;margin:0 auto;padding:0 1.5rem;">
+            <div class="section-head" data-reveal>
+                <div class="eyebrow">Quick check</div>
+                <h2 class="display">Where do you<br>stand today?</h2>
+            </div>
+
+            <div class="bmi-panel" data-reveal>
+                <div class="bmi-form-side">
+                    <p class="text-bone-dim" style="margin-bottom:1.6rem;max-width:420px;">This is a starting point, not a verdict. Enter your height and weight and we'll show you where you sit — and what we'd suggest as a next step.</p>
+                    <form id="bmiForm">
+                        <div class="field">
+                            <label for="bmiHeight">Height (cm)</label>
+                            <input type="number" id="bmiHeight" placeholder="e.g. 175" min="1" required>
+                        </div>
+                        <div class="field">
+                            <label for="bmiWeight">Weight (kg)</label>
+                            <input type="number" id="bmiWeight" placeholder="e.g. 72" min="1" required>
+                        </div>
+                        <button type="submit" class="btn btn-rust btn-block">Calculate</button>
+                    </form>
+                </div>
+                <div class="bmi-result-side" id="bmiResultWrap">
+                    <div class="bmi-readout-num" id="bmiReadoutNum">0.0</div>
+                    <div class="bmi-readout-cat" id="bmiReadoutCat">Awaiting input</div>
+                    <div class="bmi-scale">
+                        <span class="seg-1"></span><span class="seg-2"></span><span class="seg-3"></span><span class="seg-4"></span>
+                    </div>
+                    <div class="bmi-marker" id="bmiMarker" style="--marker-pos:0%"></div>
+                    <div class="bmi-readout-advice" id="bmiReadoutAdvice">Enter your height and weight to see where you stand and what we'd recommend.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="plate-rule">
+
+    <!-- ============================== TESTIMONIALS ============================== -->
+    <section class="section bg-panel">
+        <div class="wrap" style="max-width:1240px;margin:0 auto;padding:0 1.5rem;">
+            <div class="section-head" data-reveal>
+                <div class="eyebrow">From the floor</div>
+                <h2 class="display">What members<br>tell us.</h2>
+            </div>
+        </div>
+        <div class="wrap" style="max-width:1240px;margin:0 auto;padding:0 1.5rem;" data-reveal>
+            <div class="testi-track">
+                <div class="testi-card">
+                    <p class="testi-quote">"I'd tried two other gyms in town before this one. The difference here is the coaches actually watch your form — I dropped 15kg over eight months without feeling like I was starving myself."</p>
+                    <div class="testi-name">Ramesh Kumar</div>
+                    <div class="testi-role">Member since 2023</div>
+                </div>
+                <div class="testi-card">
+                    <p class="testi-quote">"As someone training for competitions, the equipment quality and Vikram's programming have been a real step up from anywhere else I've trained in Tamil Nadu."</p>
+                    <div class="testi-name">Karthik Raja</div>
+                    <div class="testi-role">Competitive lifter</div>
+                </div>
+                <div class="testi-card">
+                    <p class="testi-quote">"I was nervous walking in as a complete beginner. Priya took the time to actually teach me the basics instead of just handing me a sheet. Three months in, I look forward to coming."</p>
+                    <div class="testi-name">Anjali Devi</div>
+                    <div class="testi-role">Member since 2024</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== CONTACT ============================== -->
+    <section id="contact" class="section">
+        <div class="wrap" style="max-width:1240px;margin:0 auto;padding:0 1.5rem;">
+            <div class="section-head" data-reveal>
+                <div class="eyebrow">Get in touch</div>
+                <h2 class="display">Come in,<br>or call first.</h2>
+            </div>
+
+            <div class="contact-grid" data-reveal>
+                <div class="contact-side">
+                    <p class="text-bone-dim" style="margin-bottom:1.5rem;max-width:380px;">Drop by for a walk-through, or send your details and a coach will call you back the same day.</p>
+                    <div class="contact-line">
+                        <span>Phone</span>
+                        <a href="tel:9361315289">93613 15289</a>
+                    </div>
+                    <div class="contact-line">
+                        <span>Location</span>
+                        <span class="val">Kovilpatti, Tamil Nadu</span>
+                    </div>
+                    <div class="hours-list">
+                        <div class="eyebrow" style="margin-bottom:0.8rem;">Hours</div>
+                        <div class="hours-row"><span class="day">Mon – Sat</span><span>5:00 AM – 10:00 PM</span></div>
+                        <div class="hours-row"><span class="day">Sunday</span><span>6:00 AM – 12:00 PM</span></div>
+                    </div>
+                </div>
+
+                <div class="contact-form-side">
+                    <form id="leadForm">
+                        <div class="lead-row">
+                            <div class="field">
+                                <label for="leadName">Full name</label>
+                                <input type="text" id="leadName" required>
+                            </div>
+                            <div class="field">
+                                <label for="leadPhone">Phone number</label>
+                                <input type="tel" id="leadPhone" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="leadGoal">Your goal</label>
+                            <select id="leadGoal">
+                                <option>Build muscle</option>
+                                <option>Lose weight</option>
+                                <option>Get stronger</option>
+                                <option>General fitness</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label for="leadMsg">Anything else we should know?</label>
+                            <textarea id="leadMsg" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-rust btn-block">Send details</button>
+                        <p id="leadFormMsg" style="margin-top:1rem;font-size:0.88rem;display:none;"></p>
+                    </form>
+                </div>
+            </div>
+
+            <div class="map-frame" style="margin-top:2.5rem;" data-reveal>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15732.443198031317!2d77.8543884!3d9.1720814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b03f262843fffff%3A0x2a3e5c7075c3f3bc!2sKovilpatti%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
+                    allowfullscreen="" loading="lazy" title="SMP Gym Kovilpatti location"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== FOOTER ============================== -->
+    <footer class="gym-footer">
+        <p>&copy; 2026 SMP Gym Kovilpatti. All rights reserved. &nbsp;<span>&bull;</span>&nbsp; Built for the floor, not just the brochure.</p>
+    </footer>
+
+    <!-- Floating actions -->
+    <div class="fab-stack">
+        <a href="https://wa.me/919361315289?text=Hi%20SMP%20Gym%2C%20I%27d%20like%20to%20know%20more%20about%20membership." target="_blank" class="fab fab-whatsapp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="tel:9361315289" class="fab fab-phone" aria-label="Call"><i class="fa-solid fa-phone"></i></a>
+        <button class="fab fab-scrolltop" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
+    </div>
+
+    <!-- Mobile bottom bar -->
+    <div class="mobile-bar">
+        <div class="wrap">
+            <a href="tel:9361315289"><i class="fa-solid fa-phone"></i> Call</a>
+            <a href="https://wa.me/919361315289?text=Hi%20SMP%20Gym%2C%20I%27d%20like%20to%20know%20more%20about%20membership." target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="#contact"><i class="fa-solid fa-dumbbell"></i> Join</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+$(function () {
+    "use strict";
+
+    /* ---------------------------------------------------------------------
+       Preloader
+       ------------------------------------------------------------------ */
+    setTimeout(function () {
+        $('#preloader').css('opacity', 0);
+        setTimeout(function () { $('#preloader').remove(); }, 500);
+    }, 700);
+    // Safety net: force-remove even if something above fails
+    setTimeout(function () {
+        var el = document.getElementById('preloader');
+        if (el) el.remove();
+    }, 4000);
+
+    /* ---------------------------------------------------------------------
+       Sticky nav + mobile menu
+       ------------------------------------------------------------------ */
+    $(window).on('scroll', function () {
+        const y = $(window).scrollTop();
+        $('.gym-nav').toggleClass('scrolled', y > 40);
+        $('.fab-scrolltop').toggleClass('show', y > 400);
+    });
+
+    $('.nav-toggle').on('click', function () {
+        $('.gym-links').toggleClass('open');
+    });
+    $('.gym-links a').on('click', function () {
+        $('.gym-links').removeClass('open');
+    });
+
+    /* Smooth scroll for in-page links */
+    $('a[href^="#"]').on('click', function (e) {
+        const id = $(this).attr('href');
+        if (id.length > 1) {
+            const target = $(id);
+            if (target.length) {
+                e.preventDefault();
+                $('html, body').stop().animate({ scrollTop: target.offset().top - 84 }, 700);
+            }
+        }
+    });
+
+    /* Active link highlight on scroll */
+    const sections = $('section[id]');
+    $(window).on('scroll', function () {
+        const y = $(window).scrollTop() + 120;
+        let current = '';
+        sections.each(function () {
+            if ($(this).offset().top <= y) current = $(this).attr('id');
+        });
+        $('.gym-links a').removeClass('active');
+        $('.gym-links a[href="#' + current + '"]').addClass('active');
+    });
+
+    /* Scroll-to-top */
+    $('.fab-scrolltop').on('click', function () {
+        $('html, body').animate({ scrollTop: 0 }, 700);
+        return false;
+    });
+
+    /* ---------------------------------------------------------------------
+       Reveal on scroll
+       ------------------------------------------------------------------ */
+    const revealItems = document.querySelectorAll('[data-reveal]');
+    if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        revealItems.forEach(el => io.observe(el));
+    } else {
+        revealItems.forEach(el => el.classList.add('visible'));
+    }
+
+    /* ---------------------------------------------------------------------
+       Stat counters (mono readouts)
+       ------------------------------------------------------------------ */
+    let countersDone = false;
+    function runCounters() {
+        if (countersDone) return;
+        const $counters = $('.js-count');
+        if (!$counters.length) return;
+        const top = $counters.first().offset().top;
+        if ($(window).scrollTop() + window.innerHeight < top) return;
+
+        countersDone = true;
+        $counters.each(function () {
+            const $el = $(this);
+            const target = parseFloat($el.attr('data-target'));
+            const decimals = ($el.attr('data-target').split('.')[1] || '').length;
+            $({ val: 0 }).animate({ val: target }, {
+                duration: 1600,
+                easing: 'swing',
+                step: function () {
+                    $el.text(this.val.toFixed(decimals));
+                },
+                complete: function () {
+                    $el.text(target.toFixed(decimals));
+                }
+            });
+        });
+    }
+    $(window).on('scroll', runCounters);
+    runCounters();
+
+    /* ---------------------------------------------------------------------
+       Pricing toggle (monthly / annual)
+       ------------------------------------------------------------------ */
+    $('.pricing-toggle button').on('click', function () {
+        $('.pricing-toggle button').removeClass('active');
+        $(this).addClass('active');
+        const period = $(this).data('period');
+        $('.price-value').each(function () {
+            const val = $(this).data(period);
+            $(this).fadeOut(120, function () {
+                $(this).html(val).fadeIn(120);
+            });
+        });
+    });
+
+    /* ---------------------------------------------------------------------
+       BMI calculator
+       ------------------------------------------------------------------ */
+    $('#bmiForm').on('submit', function (e) {
+        e.preventDefault();
+        const weight = parseFloat($('#bmiWeight').val());
+        const heightCm = parseFloat($('#bmiHeight').val());
+
+        if (!weight || !heightCm || weight <= 0 || heightCm <= 0) {
+            $('#bmiHeight, #bmiWeight').each(function () {
+                if (!parseFloat($(this).val())) $(this).addClass('is-invalid');
+            });
+            return;
+        }
+        $('#bmiHeight, #bmiWeight').removeClass('is-invalid');
+
+        const h = heightCm / 100;
+        const bmi = weight / (h * h);
+        const bmiRounded = bmi.toFixed(1);
+
+        let category, colorVar, advice, markerPercent;
+
+        if (bmi < 18.5) {
+            category = 'Underweight';
+            colorVar = '#D9A23B';
+            advice = "You're carrying less mass than your frame can hold. A structured strength program with a calorie surplus will help you build solid muscle \u2014 talk to our coaches about a mass-gain plan.";
+            markerPercent = (bmi / 18.5) * 25;
+        } else if (bmi < 25) {
+            category = 'Healthy range';
+            colorVar = '#5E8C5A';
+            advice = "Your weight is in a healthy range for your height. This is a good base to build strength, improve conditioning, or work toward a specific performance goal.";
+            markerPercent = 25 + ((bmi - 18.5) / (25 - 18.5)) * 25;
+        } else if (bmi < 30) {
+            category = 'Overweight';
+            colorVar = '#B8975A';
+            advice = "You're carrying more weight than is ideal for your height. A mix of strength training and structured cardio, with attention to diet, will bring steady results \u2014 our trainers can build a plan around your schedule.";
+            markerPercent = 50 + ((bmi - 25) / (30 - 25)) * 25;
+        } else {
+            category = 'Obese range';
+            colorVar = '#C1432A';
+            advice = "Your BMI is in a range linked to higher health risk. We'd recommend starting with a supervised programme that combines low-impact cardio, resistance training, and diet guidance \u2014 book a free consultation and we'll set the pace with you.";
+            markerPercent = Math.min(75 + ((bmi - 30) / 10) * 25, 100);
+        }
+
+        $('#bmiReadoutNum').text(bmiRounded);
+        $('#bmiReadoutNum').css('color', colorVar);
+        $('#bmiReadoutCat').text(category).css('color', colorVar);
+        $('#bmiReadoutAdvice').text(advice);
+        $('#bmiMarker').css('--marker-pos', markerPercent + '%');
+        $('#bmiResultWrap').addClass('visible');
+    });
+
+    /* ---------------------------------------------------------------------
+       Lightbox for gallery
+       ------------------------------------------------------------------ */
+    $('.gallery-cell').on('click', function () {
+        const src = $(this).find('img').attr('src');
+        const alt = $(this).find('img').attr('alt') || '';
+        const $lb = $(
+            '<div class="lightbox-wrap" style="position:fixed;inset:0;background:rgba(14,14,15,0.95);' +
+            'z-index:3000;display:flex;align-items:center;justify-content:center;opacity:0;' +
+            'transition:opacity .25s ease;cursor:zoom-out;">' +
+                '<img src="' + src + '" alt="' + alt + '" style="max-width:90vw;max-height:85vh;border:1px solid var(--line-strong);">' +
+                '<span style="position:absolute;top:1.5rem;right:1.5rem;color:#F5F3EE;font-family:var(--mono);' +
+                'font-size:1.6rem;line-height:1;">&times;</span>' +
+            '</div>'
+        );
+        $('body').append($lb).css('overflow', 'hidden');
+        requestAnimationFrame(() => $lb.css('opacity', 1));
+
+        $lb.on('click', function () {
+            $(this).css('opacity', 0);
+            $('body').css('overflow', '');
+            setTimeout(() => $(this).remove(), 250);
+        });
+    });
+
+    /* ---------------------------------------------------------------------
+       Contact form validation
+       ------------------------------------------------------------------ */
+    $('#leadForm').on('submit', function (e) {
+        e.preventDefault();
+        const $form = $(this);
+        let valid = true;
+
+        $form.find('input[required], select[required], textarea[required]').each(function () {
+            if ($(this).val().trim() === '') {
+                valid = false;
+                $(this).addClass('is-invalid');
+            } else {
+                $(this).removeClass('is-invalid');
+            }
+        });
+
+        const $email = $form.find('input[type="email"]');
+        if ($email.length && $email.val()) {
+            const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($email.val());
+            if (!ok) {
+                valid = false;
+                $email.addClass('is-invalid');
+            }
+        }
+
+        const $msg = $('#leadFormMsg');
+        if (!valid) {
+            $msg.css('color', '#E0552F')
+                .text('Check the highlighted fields and try again.')
+                .show();
+        } else {
+            $msg.css('color', '#5E8C5A')
+                .text("Thanks \u2014 we've got your details. Our team will call you within the day.")
+                .show();
+            $form[0].reset();
+            $form.find('.is-invalid').removeClass('is-invalid');
+        }
+    });
+
+});
+
+    </script>
+</body>
+</html>

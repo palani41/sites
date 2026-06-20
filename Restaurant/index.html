@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMP Food Restaurant — Authentic Flavors, Modern Soul</title>
+  <meta name="description" content="SMP Food Restaurant in Chennai — South Indian, North Indian, Chinese, Seafood and more. 100+ dishes, fresh ingredients, family recipes since 1998.">
+  <meta property="og:title" content="SMP Food Restaurant">
+  <meta property="og:description" content="Authentic flavors, modern soul. Dine in or order online.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80">
+  <meta property="og:type" content="restaurant">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍛</text></svg>">
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Restaurant","name":"SMP Food Restaurant","image":"https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800","address":{"@type":"PostalAddress","streetAddress":"42 Anna Salai","addressLocality":"Chennai","addressRegion":"Tamil Nadu","postalCode":"600002","addressCountry":"IN"},"telephone":"+91-44-2345-6789","servesCuisine":["South Indian","North Indian","Chinese","Seafood"],"priceRange":"₹₹","openingHours":"Mo-Su 07:00-23:00"}</script>
+</head>
+<body>
+
+<!-- Loading Screen -->
+<div id="loading-screen">
+  <div class="loader-inner">
+    <div class="loader-logo">SMP Food</div>
+    <div style="color:rgba(255,255,255,0.45);font-size:0.85rem;margin-bottom:2rem;letter-spacing:0.1em">PREPARING YOUR EXPERIENCE</div>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+  </div>
+</div>
+
+<!-- Cart Overlay -->
+<div id="cart-overlay"></div>
+
+<!-- Cart Sidebar -->
+<div id="cart-sidebar">
+  <div class="cart-header">
+    <h3 class="cart-title">🛒 Your Order</h3>
+    <button id="cart-close" class="cart-close">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items"></div>
+  <div class="cart-footer">
+    <div class="cart-total-row">
+      <span>Total</span>
+      <span id="cart-total">₹0</span>
+    </div>
+    <button id="checkout-btn" class="btn-gold w-100 mb-2" disabled>Checkout</button>
+    <button id="clear-cart" class="btn-outline-gold w-100" style="font-size:0.85rem">Clear Cart</button>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast-smp" class="toast-smp">
+  <span class="toast-icon">✓</span>
+  <span class="toast-msg"></span>
+</div>
+
+<!-- Back to Top -->
+<button id="back-to-top" title="Back to top">↑</button>
+
+<!-- NAVBAR -->
+<nav id="mainNav" class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">SMP <span>Food</span></a>
+    <div class="d-flex align-items-center gap-2 order-lg-last">
+      <div class="cart-btn-wrap position-relative" id="cart-toggle">
+        <i class="fa fa-shopping-bag"></i>
+        <span id="cart-count">0</span>
+      </div>
+      <button class="dark-toggle">☾ Dark</button>
+      <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="offers.html">Offers</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <div class="row align-items-center min-vh-100 py-5">
+      <div class="col-lg-6">
+        <div class="hero-badge"><i class="fa fa-star me-1"></i> Rated 4.9 / 5 · Chennai's Choice</div>
+        <h1 class="hero-title">
+          Authentic Taste,
+          <span class="accent">Modern Soul</span>
+        </h1>
+        <p class="hero-subtitle">From sizzling South Indian breakfasts to royal Mughlai feasts — 100+ dishes crafted with family recipes passed down three generations.</p>
+        <div class="hero-actions">
+          <a href="menu.html" class="btn-gold">Explore Menu</a>
+          <a href="about.html" class="btn-outline-gold">Our Story</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-num">100+</div>
+            <div class="hero-stat-label">Dishes</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">25K+</div>
+            <div class="hero-stat-label">Happy Guests</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">26</div>
+            <div class="hero-stat-label">Years Serving</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">4.9★</div>
+            <div class="hero-stat-label">Avg Rating</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="hero-img-wrap">
+          <img src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=900&q=80" alt="Masala Dosa — Our Signature">
+          <div class="hero-float-card card-1">
+            <div class="hero-float-icon">🍛</div>
+            <div class="hero-float-text">
+              <strong>Today's Special</strong>
+              <span>Chettinad Chicken</span>
+            </div>
+          </div>
+          <div class="hero-float-card card-2">
+            <div class="hero-float-icon">⭐</div>
+            <div class="hero-float-text">
+              <strong>4.9 Rating</strong>
+              <span>2,400+ reviews</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WELCOME STRIP -->
+<div class="welcome-strip">
+  <div class="strip-track">
+    <span class="strip-item">🍛 South Indian Classics</span>
+    <span class="strip-item">✦</span>
+    <span class="strip-item">🫕 Mughlai Specialties</span>
+    <span class="strip-item">✦</span>
+    <span class="strip-item">🦞 Coastal Seafood</span>
+    <span class="strip-item">✦</span>
+    <span class="strip-item">🍜 Indo-Chinese Fusion</span>
+    <span class="strip-item">✦</span>
+    <span class="strip-item">🍔 Gourmet Fast Food</span>
+    <span class="strip-item">✦</span>
+    <span class="strip-item">🍮 Artisan Desserts</span>
+    <span class="strip-item">✦</span>
+    <span class="strip-item">🥤 Signature Beverages</span>
+    <span class="strip-item">✦</span>
+    <span class="strip-item">🍛 South Indian Classics</span>
+    <span class="strip-item">✦</span>
+    <span class="strip-item">🫕 Mughlai Specialties</span>
+    <span class="strip-item">✦</span>
+    <span class="strip-item">🦞 Coastal Seafood</span>
+    <span class="strip-item">✦</span>
+  </div>
+</div>
+
+<!-- WELCOME MESSAGE -->
+<section class="section-pad">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-5" data-fade-left>
+        <div style="position:relative">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=700&q=80" alt="Restaurant interior" style="border-radius:var(--radius-xl);box-shadow:var(--shadow-lg);width:100%">
+          <div style="position:absolute;bottom:-20px;right:-20px;background:var(--gold);border-radius:var(--radius-md);padding:1.5rem;box-shadow:var(--shadow-md)">
+            <div style="font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--charcoal);line-height:1">26</div>
+            <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--charcoal-soft)">Years of<br>Excellence</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7" data-fade-right>
+        <span class="section-eyebrow">Welcome to SMP Food</span>
+        <h2 class="section-title">Where Every Plate <em>Tells a Story</em></h2>
+        <div class="divider-gold"></div>
+        <p class="section-lead mb-4">Founded in 1998 by the Murugesan family in the heart of Chennai, SMP Food Restaurant was built on one belief: that great food is an act of love. From our humble tiffin stall to a 200-seat dining destination, every recipe still carries the soul of our grandmother's kitchen.</p>
+        <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.8" class="mb-4">We source our spices fresh from Chettinad, our coconuts from Palakkad, and our seafood directly from Kasimedu harbour every morning. No shortcuts. No compromises.</p>
+        <div class="row g-3 mb-4">
+          <div class="col-6">
+            <div style="display:flex;align-items:center;gap:0.75rem">
+              <span style="font-size:1.5rem">🌿</span>
+              <span style="font-size:0.9rem;font-weight:600">Fresh daily ingredients</span>
+            </div>
+          </div>
+          <div class="col-6">
+            <div style="display:flex;align-items:center;gap:0.75rem">
+              <span style="font-size:1.5rem">👨‍🍳</span>
+              <span style="font-size:0.9rem;font-weight:600">Expert chef team</span>
+            </div>
+          </div>
+          <div class="col-6">
+            <div style="display:flex;align-items:center;gap:0.75rem">
+              <span style="font-size:1.5rem">🏆</span>
+              <span style="font-size:0.9rem;font-weight:600">Award-winning recipes</span>
+            </div>
+          </div>
+          <div class="col-6">
+            <div style="display:flex;align-items:center;gap:0.75rem">
+              <span style="font-size:1.5rem">❤️</span>
+              <span style="font-size:0.9rem;font-weight:600">Made with love</span>
+            </div>
+          </div>
+        </div>
+        <a href="about.html" class="btn-gold">Read Our Story</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="section-pad featured-bg">
+  <div class="container">
+    <div class="text-center mb-5" data-fade>
+      <span class="section-eyebrow">Browse by Category</span>
+      <h2 class="section-title">What Are You <em>Craving?</em></h2>
+      <div class="divider-gold mx-auto"></div>
+    </div>
+    <div class="cat-grid" id="cat-grid-home">
+      <div class="cat-card" onclick="window.location='menu.html?cat=south-indian'">
+        <div class="cat-icon">🍛</div>
+        <div class="cat-name">South Indian</div>
+      </div>
+      <div class="cat-card" onclick="window.location='menu.html?cat=north-indian'">
+        <div class="cat-icon">🫕</div>
+        <div class="cat-name">North Indian</div>
+      </div>
+      <div class="cat-card" onclick="window.location='menu.html?cat=chinese'">
+        <div class="cat-icon">🍜</div>
+        <div class="cat-name">Chinese</div>
+      </div>
+      <div class="cat-card" onclick="window.location='menu.html?cat=fast-food'">
+        <div class="cat-icon">🍔</div>
+        <div class="cat-name">Fast Food</div>
+      </div>
+      <div class="cat-card" onclick="window.location='menu.html?cat=seafood'">
+        <div class="cat-icon">🦞</div>
+        <div class="cat-name">Seafood</div>
+      </div>
+      <div class="cat-card" onclick="window.location='menu.html?cat=desserts'">
+        <div class="cat-icon">🍮</div>
+        <div class="cat-name">Desserts</div>
+      </div>
+      <div class="cat-card" onclick="window.location='menu.html?cat=beverages'">
+        <div class="cat-icon">🥤</div>
+        <div class="cat-name">Beverages</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED FOODS -->
+<section class="section-pad">
+  <div class="container">
+    <div class="d-flex align-items-end justify-content-between flex-wrap gap-3 mb-5">
+      <div data-fade>
+        <span class="section-eyebrow">Chef's Picks</span>
+        <h2 class="section-title mb-0">Featured <em>Dishes</em></h2>
+        <div class="divider-gold"></div>
+      </div>
+      <a href="menu.html" class="btn-outline-gold">View Full Menu →</a>
+    </div>
+    <div class="row g-4" id="featured-foods-grid">
+      <!-- Loaded dynamically from foods.json -->
+      <div class="col-12 text-center py-5"><div class="spinner-border text-warning" role="status"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIAL OFFERS -->
+<section class="section-pad offers-bg">
+  <div class="container">
+    <div class="text-center mb-5" data-fade>
+      <span class="section-eyebrow" style="color:var(--gold)">Limited Time</span>
+      <h2 class="section-title" style="color:white">Today's <em>Special Offers</em></h2>
+      <div class="divider-gold mx-auto"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6" data-fade>
+        <div class="offer-card p-4">
+          <div class="offer-badge">🌅 Breakfast Deal</div>
+          <div class="offer-title">Morning Tiffin Combo</div>
+          <div class="offer-desc">Idli + Dosa + Vada + Filter Coffee — the complete South Indian breakfast</div>
+          <div class="offer-discount">30<small>% OFF</small></div>
+          <div class="mt-3"><a href="offers.html" class="btn-outline-gold" style="font-size:0.85rem">Grab This Deal</a></div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-fade>
+        <div class="offer-card p-4">
+          <div class="offer-badge">👨‍👩‍👧‍👦 Family Pack</div>
+          <div class="offer-title">Weekend Family Feast</div>
+          <div class="offer-desc">Biryani for 4 + 2 Starters + Desserts + Beverages — complete family meal</div>
+          <div class="offer-discount">25<small>% OFF</small></div>
+          <div class="mt-3"><a href="offers.html" class="btn-outline-gold" style="font-size:0.85rem">Book Now</a></div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-fade>
+        <div class="offer-card p-4">
+          <div class="offer-badge">🎂 BOGO</div>
+          <div class="offer-title">Buy One Get One Free</div>
+          <div class="offer-desc">On all desserts every Tuesday and Thursday — double the sweetness!</div>
+          <div class="offer-discount">1+1<small> FREE</small></div>
+          <div class="mt-3"><a href="offers.html" class="btn-outline-gold" style="font-size:0.85rem">View Offer</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="section-pad stats-bg">
+  <div class="container">
+    <div class="row g-0">
+      <div class="col-6 col-md-3" data-fade>
+        <div class="stat-item">
+          <div class="stat-number" data-counter data-target="25000" data-suffix="+">0</div>
+          <div class="stat-label">Happy Guests</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-fade>
+        <div class="stat-item">
+          <div class="stat-number" data-counter data-target="105" data-suffix="+">0</div>
+          <div class="stat-label">Menu Items</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-fade>
+        <div class="stat-item">
+          <div class="stat-number" data-counter data-target="26">0</div>
+          <div class="stat-label">Years of Excellence</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-fade>
+        <div class="stat-item">
+          <div class="stat-number" data-counter data-target="4.9" data-suffix="★">0</div>
+          <div class="stat-label">Average Rating</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="section-pad">
+  <div class="container">
+    <div class="text-center mb-5" data-fade>
+      <span class="section-eyebrow">Why SMP Food</span>
+      <h2 class="section-title">More Than Just <em>Good Food</em></h2>
+      <div class="divider-gold mx-auto"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6 why-item" data-fade>
+        <div class="why-icon-wrap">🌿</div>
+        <h5 style="font-family:var(--font-display);font-weight:700;margin-bottom:0.5rem">Farm-Fresh Ingredients</h5>
+        <p style="color:var(--text-muted);font-size:0.9rem">We partner with local farms and daily markets. What arrives on your plate was harvested this morning.</p>
+      </div>
+      <div class="col-lg-4 col-md-6 why-item" data-fade>
+        <div class="why-icon-wrap">👨‍🍳</div>
+        <h5 style="font-family:var(--font-display);font-weight:700;margin-bottom:0.5rem">Master Chefs</h5>
+        <p style="color:var(--text-muted);font-size:0.9rem">Our culinary team trained at India's finest institutions, bringing decades of combined expertise to every dish.</p>
+      </div>
+      <div class="col-lg-4 col-md-6 why-item" data-fade>
+        <div class="why-icon-wrap">🏆</div>
+        <h5 style="font-family:var(--font-display);font-weight:700;margin-bottom:0.5rem">Award-Winning Kitchen</h5>
+        <p style="color:var(--text-muted);font-size:0.9rem">Recognized by Tamil Nadu Tourism Board and multiple food critics as Chennai's best multi-cuisine destination.</p>
+      </div>
+      <div class="col-lg-4 col-md-6 why-item" data-fade>
+        <div class="why-icon-wrap">⚡</div>
+        <h5 style="font-family:var(--font-display);font-weight:700;margin-bottom:0.5rem">Quick Service</h5>
+        <p style="color:var(--text-muted);font-size:0.9rem">We respect your time. Breakfast dishes in 10 minutes, main courses in 20. Guaranteed.</p>
+      </div>
+      <div class="col-lg-4 col-md-6 why-item" data-fade>
+        <div class="why-icon-wrap">♻️</div>
+        <h5 style="font-family:var(--font-display);font-weight:700;margin-bottom:0.5rem">Eco-Conscious</h5>
+        <p style="color:var(--text-muted);font-size:0.9rem">Zero single-use plastic. Banana leaf service available. Composting program since 2019. Green restaurant certified.</p>
+      </div>
+      <div class="col-lg-4 col-md-6 why-item" data-fade>
+        <div class="why-icon-wrap">💝</div>
+        <h5 style="font-family:var(--font-display);font-weight:700;margin-bottom:0.5rem">Community First</h5>
+        <p style="color:var(--text-muted);font-size:0.9rem">We employ 60+ local staff, support 12 nearby farms, and provide free meals to 50 families every Sunday.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section-pad featured-bg">
+  <div class="container">
+    <div class="text-center mb-5" data-fade>
+      <span class="section-eyebrow">Guest Voices</span>
+      <h2 class="section-title">What Our Guests <em>Say</em></h2>
+      <div class="divider-gold mx-auto"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6" data-fade>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">The Chettinad Chicken Curry here is the most authentic I've had outside of Chettinad itself. The depth of spice, the freshness — nothing like it in Chennai. We drive 45 minutes from Tambaram just for this.</p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/100?img=11" alt="Priya M" class="testimonial-avatar">
+            <div>
+              <div class="testimonial-name">Priya Murugesan</div>
+              <div class="testimonial-meta">Regular guest since 2015 · Google Review</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-fade>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">Took my foreign colleagues here after a business meeting. The Masala Dosa left them speechless. Four of them have already come back on their own. SMP is now our go-to for client entertaining.</p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/100?img=33" alt="Karthik R" class="testimonial-avatar">
+            <div>
+              <div class="testimonial-name">Karthik Rajan</div>
+              <div class="testimonial-meta">Business owner · Zomato Review</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-fade>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">Celebrated our 25th anniversary here. The team decorated the table, Chef Arumugam came out personally and prepared a special dessert. That kind of hospitality is rare. SMP has a lifetime customer in us.</p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/100?img=47" alt="Lakshmi S" class="testimonial-avatar">
+            <div>
+              <div class="testimonial-name">Lakshmi Srinivasan</div>
+              <div class="testimonial-meta">Anniversary dinner · Swiggy Review</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section section-pad">
+  <div class="container text-center" data-fade>
+    <h2 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--charcoal);margin-bottom:1rem">Hungry? <em>We're Ready.</em></h2>
+    <p style="color:rgba(26,26,26,0.7);max-width:480px;margin:0 auto 2rem;font-size:1.05rem">Open every day from 7 AM to 11 PM. Walk in, call ahead, or order online — same great food, always.</p>
+    <div class="d-flex gap-3 justify-content-center flex-wrap">
+      <a href="menu.html" class="btn-dark-pill">Order Online</a>
+      <a href="contact.html" class="btn-dark-pill">Reserve a Table</a>
+      <a href="tel:+914423456789" class="btn-dark-pill"><i class="fa fa-phone me-2"></i>+91 44 2345 6789</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer pt-5">
+  <div class="container">
+    <div class="row g-5 pb-5">
+      <div class="col-lg-4">
+        <div class="footer-brand mb-3">SMP Food</div>
+        <p class="footer-text mb-4">Authentic flavors, modern soul. Three generations of culinary passion, served fresh every day since 1998.</p>
+        <div class="social-icons mb-4">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6">
+        <div class="footer-heading">Quick Links</div>
+        <a class="footer-link" href="index.html">Home</a>
+        <a class="footer-link" href="about.html">About Us</a>
+        <a class="footer-link" href="menu.html">Our Menu</a>
+        <a class="footer-link" href="gallery.html">Gallery</a>
+        <a class="footer-link" href="offers.html">Offers</a>
+        <a class="footer-link" href="contact.html">Contact</a>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6">
+        <div class="footer-heading">Categories</div>
+        <a class="footer-link" href="menu.html?cat=south-indian">South Indian</a>
+        <a class="footer-link" href="menu.html?cat=north-indian">North Indian</a>
+        <a class="footer-link" href="menu.html?cat=chinese">Chinese</a>
+        <a class="footer-link" href="menu.html?cat=seafood">Seafood</a>
+        <a class="footer-link" href="menu.html?cat=desserts">Desserts</a>
+        <a class="footer-link" href="menu.html?cat=beverages">Beverages</a>
+      </div>
+      <div class="col-lg-4 col-md-4">
+        <div class="footer-heading">Stay in Touch</div>
+        <p class="footer-text mb-3">Get weekly specials, new dishes and exclusive offers straight to your inbox.</p>
+        <form id="newsletter-form" class="newsletter-form mb-4">
+          <input type="email" placeholder="Your email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+        <div class="footer-text">
+          <i class="fa fa-map-marker me-2" style="color:var(--gold)"></i>42 Anna Salai, Chennai 600002<br>
+          <i class="fa fa-phone me-2" style="color:var(--gold)"></i>+91 44 2345 6789<br>
+          <i class="fa fa-clock me-2" style="color:var(--gold)"></i>Mon–Sun: 7:00 AM – 11:00 PM
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <p>© 2024 SMP Food Restaurant. All rights reserved.</p>
+      <p>Made with ❤️ in Chennai</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/cart.js"></script>
+<script src="assets/js/script.js"></script>
+</body>
+</html>

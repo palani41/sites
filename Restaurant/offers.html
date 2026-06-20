@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Special Offers — SMP Food Restaurant</title>
+  <meta name="description" content="Exclusive deals at SMP Food Restaurant — combo meals, weekend offers, family packs, festival discounts and buy-one-get-one specials.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍛</text></svg>">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- Cart Overlay & Sidebar -->
+<div id="cart-overlay"></div>
+<div id="cart-sidebar">
+  <div class="cart-header">
+    <h3 class="cart-title">🛒 Your Order</h3>
+    <button id="cart-close" class="cart-close">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items"></div>
+  <div class="cart-footer">
+    <div class="cart-total-row"><span>Total</span><span id="cart-total">₹0</span></div>
+    <button id="checkout-btn" class="btn-gold w-100 mb-2" disabled>Checkout</button>
+    <button id="clear-cart" class="btn-outline-gold w-100" style="font-size:0.85rem">Clear Cart</button>
+  </div>
+</div>
+<div id="toast-smp" class="toast-smp"><span class="toast-icon">✓</span><span class="toast-msg"></span></div>
+<button id="back-to-top" title="Back to top">↑</button>
+
+<!-- NAVBAR -->
+<nav id="mainNav" class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">SMP <span>Food</span></a>
+    <div class="d-flex align-items-center gap-2 order-lg-last">
+      <div class="cart-btn-wrap position-relative" id="cart-toggle">
+        <i class="fa fa-shopping-bag"></i><span id="cart-count">0</span>
+      </div>
+      <button class="dark-toggle">☾ Dark</button>
+      <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="offers.html">Offers</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="offers-hero">
+  <div style="position:relative;z-index:2">
+    <div class="container text-center text-white">
+      <span class="section-eyebrow" data-fade>Don't Miss Out</span>
+      <h1 class="section-title" style="color:white" data-fade>Special <em>Offers</em></h1>
+      <div class="divider-gold mx-auto"></div>
+      <p style="color:rgba(255,255,255,0.65);max-width:500px;margin:1rem auto 0;font-size:1rem" data-fade>
+        Hand-picked deals updated regularly. Combo meals, family packs, festival discounts and more — all designed to give you more for less.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- TODAY'S FLASH DEAL WITH COUNTDOWN -->
+<section class="section-pad-sm">
+  <div class="container">
+    <div class="timer-section" data-fade>
+      <span class="section-eyebrow" style="color:var(--gold)">⚡ Flash Deal — Ends Tonight</span>
+      <h3 style="font-family:var(--font-display);color:white;font-size:1.8rem;margin:0.5rem 0 1.5rem">Get 20% Off All Biryani Orders</h3>
+      <div class="timer-boxes">
+        <div class="timer-box">
+          <div class="timer-num" id="timer-h">00</div>
+          <div class="timer-label">Hours</div>
+        </div>
+        <div class="timer-box">
+          <div class="timer-num" id="timer-m">00</div>
+          <div class="timer-label">Minutes</div>
+        </div>
+        <div class="timer-box">
+          <div class="timer-num" id="timer-s">00</div>
+          <div class="timer-label">Seconds</div>
+        </div>
+      </div>
+      <a href="menu.html?cat=north-indian" class="btn-gold mt-3">Order Biryani Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- COMBO MEALS -->
+<section class="section-pad">
+  <div class="container">
+    <div class="text-center mb-5" data-fade>
+      <span class="section-eyebrow">Perfectly Paired</span>
+      <h2 class="section-title">Combo <em>Meals</em></h2>
+      <div class="divider-gold mx-auto"></div>
+      <p class="section-lead mx-auto" style="text-align:center">Carefully curated combinations that bring out the best in every dish — at a price that makes sense.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6" data-fade>
+        <div class="combo-card">
+          <img src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=500&q=80" alt="South Indian Combo" class="combo-img">
+          <div class="combo-body">
+            <span class="combo-tag">South Indian</span>
+            <div class="combo-title">Tiffin Trio Combo</div>
+            <p style="font-size:0.85rem;color:var(--text-muted)">Idli + Vada + Mini Dosa with sambar & 3 chutneys</p>
+            <div class="price-compare mb-2">
+              <span class="price-original">₹240</span>
+              <span class="price-offer">₹179</span>
+              <span class="savings-badge">Save 25%</span>
+            </div>
+            <button class="btn-gold w-100" onclick='Cart.add({id:9001,name:"Tiffin Trio Combo",category:"south-indian",price:179,rating:4.8,image:"https://images.unsplash.com/photo-1567337710282-00832b415979?w=400&q=80"})'>Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-fade>
+        <div class="combo-card">
+          <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500&q=80" alt="Biryani Combo" class="combo-img">
+          <div class="combo-body">
+            <span class="combo-tag">North Indian</span>
+            <div class="combo-title">Royal Biryani Combo</div>
+            <p style="font-size:0.85rem;color:var(--text-muted)">Chicken Biryani + Raita + Boiled Egg + Gulab Jamun</p>
+            <div class="price-compare mb-2">
+              <span class="price-original">₹450</span>
+              <span class="price-offer">₹349</span>
+              <span class="savings-badge">Save 22%</span>
+            </div>
+            <button class="btn-gold w-100" onclick='Cart.add({id:9002,name:"Royal Biryani Combo",category:"north-indian",price:349,rating:4.9,image:"https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400&q=80"})'>Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-fade>
+        <div class="combo-card">
+          <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=500&q=80" alt="Chinese Combo" class="combo-img">
+          <div class="combo-body">
+            <span class="combo-tag">Chinese</span>
+            <div class="combo-title">Wok Duo Combo</div>
+            <p style="font-size:0.85rem;color:var(--text-muted)">Hakka Noodles + Manchurian + Spring Rolls (3pc)</p>
+            <div class="price-compare mb-2">
+              <span class="price-original">₹420</span>
+              <span class="price-offer">₹329</span>
+              <span class="savings-badge">Save 21%</span>
+            </div>
+            <button class="btn-gold w-100" onclick='Cart.add({id:9003,name:"Wok Duo Combo",category:"chinese",price:329,rating:4.7,image:"https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400&q=80"})'>Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-fade>
+        <div class="combo-card">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&q=80" alt="Fast Food Combo" class="combo-img">
+          <div class="combo-body">
+            <span class="combo-tag">Fast Food</span>
+            <div class="combo-title">Burger Meal Deal</div>
+            <p style="font-size:0.85rem;color:var(--text-muted)">Classic Burger + Loaded Fries + Soft Drink</p>
+            <div class="price-compare mb-2">
+              <span class="price-original">₹450</span>
+              <span class="price-offer">₹329</span>
+              <span class="savings-badge">Save 27%</span>
+            </div>
+            <button class="btn-gold w-100" onclick='Cart.add({id:9004,name:"Burger Meal Deal",category:"fast-food",price:329,rating:4.7,image:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80"})'>Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WEEKEND OFFERS -->
+<section class="section-pad offers-bg">
+  <div class="container">
+    <div class="text-center mb-5" data-fade>
+      <span class="section-eyebrow">Saturday & Sunday Special</span>
+      <h2 class="section-title" style="color:white">Weekend <em>Offers</em></h2>
+      <div class="divider-gold mx-auto"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-6" data-fade>
+        <div class="big-offer-card p-4 p-md-5">
+          <div class="row align-items-center g-4">
+            <div class="col-md-5">
+              <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&q=80" alt="Weekend Brunch" class="combo-img" style="border-radius:var(--radius-md);height:160px">
+            </div>
+            <div class="col-md-7">
+              <div class="offer-badge">🥞 Weekend Only</div>
+              <h4 style="font-family:var(--font-display);color:white;margin-bottom:0.5rem">Saturday Brunch Buffet</h4>
+              <p style="color:rgba(255,255,255,0.6);font-size:0.88rem;margin-bottom:1rem">Unlimited South & North Indian breakfast spread, 8 AM – 11 AM. Includes coffee/tea.</p>
+              <div class="offer-discount mb-2">₹299<small>/person</small></div>
+              <a href="contact.html" class="btn-gold" style="font-size:0.85rem">Reserve Table</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6" data-fade>
+        <div class="big-offer-card p-4 p-md-5">
+          <div class="row align-items-center g-4">
+            <div class="col-md-5">
+              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80" alt="Seafood Night" class="combo-img" style="border-radius:var(--radius-md);height:160px">
+            </div>
+            <div class="col-md-7">
+              <div class="offer-badge">🦞 Sunday Special</div>
+              <h4 style="font-family:var(--font-display);color:white;margin-bottom:0.5rem">Sunday Seafood Night</h4>
+              <p style="color:rgba(255,255,255,0.6);font-size:0.88rem;margin-bottom:1rem">Flat 20% off all seafood mains after 6 PM. Includes complimentary appetizer.</p>
+              <div class="offer-discount mb-2">20<small>% OFF</small></div>
+              <a href="menu.html?cat=seafood" class="btn-gold" style="font-size:0.85rem">View Seafood Menu</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAMILY PACKS -->
+<section class="section-pad">
+  <div class="container">
+    <div class="text-center mb-5" data-fade>
+      <span class="section-eyebrow">More for the Whole Table</span>
+      <h2 class="section-title">Family <em>Packs</em></h2>
+      <div class="divider-gold mx-auto"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4" data-fade>
+        <div class="combo-card">
+          <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&q=80" alt="Family Pack for 4" class="combo-img">
+          <div class="combo-body">
+            <span class="combo-tag">Serves 4</span>
+            <div class="combo-title">Family Feast — Small</div>
+            <p style="font-size:0.85rem;color:var(--text-muted)">2 Biryani + 2 Curries + 8 Naan/Roti + Raita + Dessert for 4</p>
+            <div class="price-compare mb-2">
+              <span class="price-original">₹1,800</span>
+              <span class="price-offer">₹1,399</span>
+              <span class="savings-badge">Save 22%</span>
+            </div>
+            <button class="btn-gold w-100" onclick='Cart.add({id:9005,name:"Family Feast - Small",category:"north-indian",price:1399,rating:4.8,image:"https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&q=80"})'>Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4" data-fade>
+        <div class="combo-card" style="border-color:var(--gold)">
+          <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500&q=80" alt="Family Pack for 6" class="combo-img">
+          <div class="combo-body">
+            <span class="combo-tag" style="background:var(--gold);color:var(--charcoal)">Most Popular · Serves 6</span>
+            <div class="combo-title">Family Feast — Grand</div>
+            <p style="font-size:0.85rem;color:var(--text-muted)">3 Biryani + 3 Curries + 12 Naan + Starters + Raita + 2 Desserts for 6</p>
+            <div class="price-compare mb-2">
+              <span class="price-original">₹3,200</span>
+              <span class="price-offer">₹2,399</span>
+              <span class="savings-badge">Save 25%</span>
+            </div>
+            <button class="btn-gold w-100" onclick='Cart.add({id:9006,name:"Family Feast - Grand",category:"north-indian",price:2399,rating:4.9,image:"https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400&q=80"})'>Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4" data-fade>
+        <div class="combo-card">
+          <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=500&q=80" alt="Festival Pack" class="combo-img">
+          <div class="combo-body">
+            <span class="combo-tag">Serves 8+</span>
+            <div class="combo-title">Celebration Mega Pack</div>
+            <p style="font-size:0.85rem;color:var(--text-muted)">4 Biryani + 4 Curries + 16 Naan + 4 Starters + 4 Desserts + Beverages for 8+</p>
+            <div class="price-compare mb-2">
+              <span class="price-original">₹4,800</span>
+              <span class="price-offer">₹3,599</span>
+              <span class="savings-badge">Save 25%</span>
+            </div>
+            <button class="btn-gold w-100" onclick='Cart.add({id:9007,name:"Celebration Mega Pack",category:"north-indian",price:3599,rating:4.8,image:"https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=400&q=80"})'>Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FESTIVAL DISCOUNTS -->
+<section class="section-pad featured-bg">
+  <div class="container">
+    <div class="text-center mb-5" data-fade>
+      <span class="section-eyebrow">Celebrate With Us</span>
+      <h2 class="section-title">Festival <em>Discounts</em></h2>
+      <div class="divider-gold mx-auto"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6" data-fade>
+        <div class="value-card text-center">
+          <div class="value-icon">🪔</div>
+          <div class="value-title">Diwali Special</div>
+          <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem">Flat 30% off on festive sweet boxes & family thalis</p>
+          <span class="offer-badge" style="background:rgba(212,168,71,0.12);color:var(--gold)">30% OFF</span>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-fade>
+        <div class="value-card text-center">
+          <div class="value-icon">🌾</div>
+          <div class="value-title">Pongal Feast</div>
+          <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem">Free traditional Pongal with every biryani order, Jan 14-17</p>
+          <span class="offer-badge" style="background:rgba(212,168,71,0.12);color:var(--gold)">Free Add-on</span>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-fade>
+        <div class="value-card text-center">
+          <div class="value-icon">🎄</div>
+          <div class="value-title">Christmas Cheer</div>
+          <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem">Complimentary plum cake slice with every dessert order in December</p>
+          <span class="offer-badge" style="background:rgba(212,168,71,0.12);color:var(--gold)">Free Add-on</span>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-fade>
+        <div class="value-card text-center">
+          <div class="value-icon">🎉</div>
+          <div class="value-title">New Year Bash</div>
+          <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem">Special tasting menu + live music, Dec 31. Book early — limited tables!</p>
+          <span class="offer-badge" style="background:rgba(212,168,71,0.12);color:var(--gold)">Book Now</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOGO -->
+<section class="section-pad">
+  <div class="container">
+    <div class="text-center mb-5" data-fade>
+      <span class="section-eyebrow">Double the Joy</span>
+      <h2 class="section-title">Buy One Get One <em>Free</em></h2>
+      <div class="divider-gold mx-auto"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4" data-fade>
+        <div class="big-offer-card p-4 text-center">
+          <div style="font-size:2.5rem;margin-bottom:1rem">🍮</div>
+          <h5 style="font-family:var(--font-display);color:white;margin-bottom:0.5rem">Dessert Days</h5>
+          <p style="color:rgba(255,255,255,0.6);font-size:0.88rem;margin-bottom:1rem">Every Tuesday & Thursday — Buy any dessert, get a second one free.</p>
+          <a href="menu.html?cat=desserts" class="btn-outline-gold" style="font-size:0.85rem">View Desserts</a>
+        </div>
+      </div>
+      <div class="col-lg-4" data-fade>
+        <div class="big-offer-card p-4 text-center">
+          <div style="font-size:2.5rem;margin-bottom:1rem">🥤</div>
+          <h5 style="font-family:var(--font-display);color:white;margin-bottom:0.5rem">Beverage Bonanza</h5>
+          <p style="color:rgba(255,255,255,0.6);font-size:0.88rem;margin-bottom:1rem">All day, every day — buy any 2 beverages, get the cheapest one free.</p>
+          <a href="menu.html?cat=beverages" class="btn-outline-gold" style="font-size:0.85rem">View Beverages</a>
+        </div>
+      </div>
+      <div class="col-lg-4" data-fade>
+        <div class="big-offer-card p-4 text-center">
+          <div style="font-size:2.5rem;margin-bottom:1rem">🍜</div>
+          <h5 style="font-family:var(--font-display);color:white;margin-bottom:0.5rem">Starter Special</h5>
+          <p style="color:rgba(255,255,255,0.6);font-size:0.88rem;margin-bottom:1rem">Wednesdays only — order any starter and get a second starter (lower price) free.</p>
+          <a href="menu.html?cat=chinese" class="btn-outline-gold" style="font-size:0.85rem">View Starters</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section section-pad-sm">
+  <div class="container text-center">
+    <h3 style="font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--charcoal);margin-bottom:0.75rem">Offers refresh weekly — don't miss out!</h3>
+    <p style="color:rgba(26,26,26,0.7);margin-bottom:1.5rem">Subscribe to our newsletter to get exclusive offers before everyone else.</p>
+    <a href="#newsletter-form" class="btn-dark-pill">Subscribe for Deals</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer pt-5">
+  <div class="container">
+    <div class="row g-5 pb-5">
+      <div class="col-lg-4">
+        <div class="footer-brand mb-3">SMP Food</div>
+        <p class="footer-text mb-4">Authentic flavors, modern soul. Three generations of culinary passion, served fresh every day since 1998.</p>
+        <div class="social-icons">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6">
+        <div class="footer-heading">Quick Links</div>
+        <a class="footer-link" href="index.html">Home</a>
+        <a class="footer-link" href="about.html">About Us</a>
+        <a class="footer-link" href="menu.html">Our Menu</a>
+        <a class="footer-link" href="gallery.html">Gallery</a>
+        <a class="footer-link" href="offers.html">Offers</a>
+        <a class="footer-link" href="contact.html">Contact</a>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6">
+        <div class="footer-heading">Menu</div>
+        <a class="footer-link" href="menu.html?cat=south-indian">South Indian</a>
+        <a class="footer-link" href="menu.html?cat=north-indian">North Indian</a>
+        <a class="footer-link" href="menu.html?cat=chinese">Chinese</a>
+        <a class="footer-link" href="menu.html?cat=seafood">Seafood</a>
+        <a class="footer-link" href="menu.html?cat=desserts">Desserts</a>
+        <a class="footer-link" href="menu.html?cat=beverages">Beverages</a>
+      </div>
+      <div class="col-lg-4 col-md-4">
+        <div class="footer-heading">Newsletter</div>
+        <p class="footer-text mb-3">Get weekly specials and exclusive offers.</p>
+        <form id="newsletter-form" class="newsletter-form mb-4">
+          <input type="email" placeholder="Your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+        <div class="footer-text">
+          <i class="fa fa-map-marker me-2" style="color:var(--gold)"></i>42 Anna Salai, Chennai 600002<br>
+          <i class="fa fa-phone me-2" style="color:var(--gold)"></i>+91 44 2345 6789
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <p>© 2024 SMP Food Restaurant. All rights reserved.</p>
+      <p>Made with ❤️ in Chennai</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/cart.js"></script>
+<script src="assets/js/script.js"></script>
+</body>
+</html>

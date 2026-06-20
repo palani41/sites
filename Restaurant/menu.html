@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu — SMP Food Restaurant</title>
+  <meta name="description" content="Browse 100+ dishes at SMP Food Restaurant. South Indian, North Indian, Chinese, Seafood, Desserts and Beverages. Filter by category, price, rating.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍛</text></svg>">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- Cart Overlay -->
+<div id="cart-overlay"></div>
+
+<!-- Cart Sidebar -->
+<div id="cart-sidebar">
+  <div class="cart-header">
+    <h3 class="cart-title">🛒 Your Order</h3>
+    <button id="cart-close" class="cart-close">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items"></div>
+  <div class="cart-footer">
+    <div class="cart-total-row">
+      <span>Total</span>
+      <span id="cart-total">₹0</span>
+    </div>
+    <button id="checkout-btn" class="btn-gold w-100 mb-2" disabled>Checkout</button>
+    <button id="clear-cart" class="btn-outline-gold w-100" style="font-size:0.85rem">Clear Cart</button>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast-smp" class="toast-smp">
+  <span class="toast-icon">✓</span>
+  <span class="toast-msg"></span>
+</div>
+
+<!-- Back to Top -->
+<button id="back-to-top" title="Back to top">↑</button>
+
+<!-- NAVBAR -->
+<nav id="mainNav" class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">SMP <span>Food</span></a>
+    <div class="d-flex align-items-center gap-2 order-lg-last">
+      <div class="cart-btn-wrap position-relative" id="cart-toggle">
+        <i class="fa fa-shopping-bag"></i>
+        <span id="cart-count">0</span>
+      </div>
+      <button class="dark-toggle">☾ Dark</button>
+      <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="offers.html">Offers</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="menu-hero">
+  <div style="position:relative;z-index:2;padding-top:2rem">
+    <div class="container text-center text-white">
+      <span class="section-eyebrow" data-fade>Our Full Menu</span>
+      <h1 class="section-title" style="color:white" data-fade>100+ Dishes, <em>One Roof</em></h1>
+      <div class="divider-gold mx-auto"></div>
+      <p style="color:rgba(255,255,255,0.65);max-width:520px;margin:1rem auto 2rem;font-size:1rem" data-fade>
+        From a morning idli to a midnight biryani — everything made fresh, every single day.
+      </p>
+      <!-- Live Search -->
+      <div class="search-bar-wrap mx-auto" data-fade>
+        <input type="text" id="food-search" placeholder="Search dishes, categories, ingredients…" autocomplete="off">
+        <i class="fa fa-search search-icon"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-section">
+  <div class="container">
+    <!-- Category Pills -->
+    <div class="d-flex gap-2 flex-wrap mb-3" id="category-filter-pills">
+      <div class="filter-pill active" data-cat="all">Loading…</div>
+    </div>
+    <!-- Secondary Filters -->
+    <div class="d-flex gap-2 flex-wrap align-items-center justify-content-between">
+      <div class="d-flex gap-2 flex-wrap">
+        <!-- Veg / Non-veg -->
+        <button class="filter-pill active" data-veg="all">All</button>
+        <button class="filter-pill" data-veg="veg">🟢 Veg</button>
+        <button class="filter-pill" data-veg="nonveg">🔴 Non-Veg</button>
+        <!-- Price Range -->
+        <button class="filter-pill active" data-price="all">Any Price</button>
+        <button class="filter-pill" data-price="0-100">Under ₹100</button>
+        <button class="filter-pill" data-price="100-200">₹100–200</button>
+        <button class="filter-pill" data-price="200-400">₹200–400</button>
+        <button class="filter-pill" data-price="400">₹400+</button>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <span id="result-count" style="font-size:0.82rem;color:var(--text-muted)"></span>
+        <select id="sort-select" class="form-select form-select-sm" style="width:auto;border:1px solid var(--border);border-radius:20px;font-size:0.83rem;padding:0.4rem 1rem;background:var(--white);color:var(--text-main)">
+          <option value="popularity">Most Popular</option>
+          <option value="rating">Top Rated</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="name">A–Z</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MENU GRID -->
+<section class="section-pad">
+  <div class="container">
+    <div class="menu-grid" id="menu-grid">
+      <!-- Loaded dynamically from foods.json -->
+      <div style="grid-column:1/-1;text-align:center;padding:4rem 0">
+        <div class="spinner-border text-warning" role="status" style="width:3rem;height:3rem"></div>
+        <p class="mt-3 text-muted">Loading our menu…</p>
+      </div>
+    </div>
+    <!-- Pagination -->
+    <div class="pagination-smp" id="pagination"></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section section-pad-sm">
+  <div class="container text-center">
+    <h3 style="font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--charcoal);margin-bottom:0.75rem">Can't decide? Let us choose for you.</h3>
+    <p style="color:rgba(26,26,26,0.7);margin-bottom:1.5rem">Call us and our staff will curate a meal based on your mood and appetite.</p>
+    <a href="tel:+914423456789" class="btn-dark-pill"><i class="fa fa-phone me-2"></i>+91 44 2345 6789</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer pt-5">
+  <div class="container">
+    <div class="row g-5 pb-5">
+      <div class="col-lg-4">
+        <div class="footer-brand mb-3">SMP Food</div>
+        <p class="footer-text mb-4">Authentic flavors, modern soul. Three generations of culinary passion, served fresh every day since 1998.</p>
+        <div class="social-icons">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6">
+        <div class="footer-heading">Quick Links</div>
+        <a class="footer-link" href="index.html">Home</a>
+        <a class="footer-link" href="about.html">About Us</a>
+        <a class="footer-link" href="menu.html">Our Menu</a>
+        <a class="footer-link" href="gallery.html">Gallery</a>
+        <a class="footer-link" href="offers.html">Offers</a>
+        <a class="footer-link" href="contact.html">Contact</a>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6">
+        <div class="footer-heading">Menu Categories</div>
+        <a class="footer-link" href="#">South Indian</a>
+        <a class="footer-link" href="#">North Indian</a>
+        <a class="footer-link" href="#">Chinese</a>
+        <a class="footer-link" href="#">Seafood</a>
+        <a class="footer-link" href="#">Desserts</a>
+        <a class="footer-link" href="#">Beverages</a>
+      </div>
+      <div class="col-lg-4 col-md-4">
+        <div class="footer-heading">Newsletter</div>
+        <p class="footer-text mb-3">Get weekly specials and exclusive offers.</p>
+        <form id="newsletter-form" class="newsletter-form">
+          <input type="email" placeholder="Your email" required>
+          <button type="submit">Go</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <p>© 2024 SMP Food Restaurant. All rights reserved.</p>
+      <p>Made with ❤️ in Chennai</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/cart.js"></script>
+<script src="assets/js/filter.js"></script>
+<script src="assets/js/script.js"></script>
+<script>
+  // Handle URL category parameter
+  $(document).ready(function () {
+    const params = new URLSearchParams(window.location.search);
+    const cat = params.get('cat');
+    if (cat) {
+      // Wait for filter to init then set category
+      setTimeout(() => {
+        const $pill = $(`.filter-pill[data-cat="${cat}"]`);
+        if ($pill.length) $pill.trigger('click');
+      }, 800);
+    }
+  });
+</script>
+</body>
+</html>
