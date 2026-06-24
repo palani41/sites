@@ -70,6 +70,43 @@ $(document).ready(function () {
   });
 
   // ==========================================================================
+  // Custom ScrollSpy (highlights active link based on scroll position)
+  // ==========================================================================
+  var $navLinks = $('.navbar-nav .nav-link');
+  var $sections = $('section');
+
+  function updateActiveNavLink() {
+    var scrollPos = $(window).scrollTop();
+    var offset = 95; // Trigger threshold offset in pixels from viewport top
+
+    $sections.each(function () {
+      var top = $(this).offset().top - offset;
+      var bottom = top + $(this).outerHeight();
+      var id = $(this).attr('id');
+
+      if (scrollPos >= top && scrollPos < bottom) {
+        if (id) {
+          var $matchingLink = $('.navbar-nav').find('[href="#' + id + '"]');
+          if ($matchingLink.length) {
+            $navLinks.removeClass('active');
+            $matchingLink.addClass('active');
+          }
+        }
+      }
+    });
+
+    // Special fallback for very top of page (Home)
+    if (scrollPos < 100) {
+      $navLinks.removeClass('active');
+      $('.navbar-nav').find('[href="#home"]').addClass('active');
+    }
+  }
+
+  // Bind scroll spy
+  $(window).on('scroll', updateActiveNavLink);
+  updateActiveNavLink();
+
+  // ==========================================================================
   // Smooth Scroll for Navigation and Anchors
   // ==========================================================================
   $('a[href^="#"]:not([href="#"])').on('click', function (event) {
